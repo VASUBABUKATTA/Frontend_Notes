@@ -1,0 +1,9 @@
+body
+{
+	background-color:#ffffff;
+	background-image:url("https://searchengineland.com/figz/wp-content/seloads/2018/07/google-building-logo-shutterstock_559400386.jpg") , url("https://pngimg.com/uploads/mickey_mouse/mickey_mouse_PNG25.png");
+	background-repeat:no-repeat;
+	background-position:center 0px;
+	background-attachment:scroll;
+	background-blend-mode:darken;
+}

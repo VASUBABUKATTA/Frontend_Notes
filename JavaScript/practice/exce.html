@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <div class="panel-wrapper collapse in">
+        <div class="panel-body">
+            <div class="table-wrap">
+                <div class="table-responsive">
+                    <table class="table table-hover display pb-30" id="datable_1">
+                        <thead class="bg-primary">
+                            <tr>
+                                <th style="color:#fff;">S.NO</th>
+                                <th style="color:#fff;">Doctors Degree</th>
+                                <th style="color:#fff;">Short Form</th>
+                                <th style="color:#fff;">Short Description</th>
+                                <th style="color:#fff;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="doctorTableBody">
+                            <!-- Doctor data will be appended here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editDoctorModal" tabindex="-1" role="dialog" aria-labelledby="editDoctorModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editDoctorModalLabel">Edit Doctor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="validationFormedit">
+                        <input type="hidden" id="editDoctorId" name="id">
+                        <div class="form-group">
+                            <label for="edegree">Degree</label>
+                            <input type="text" class="form-control" id="edegree" name="edegree" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="eshortform">Short Form</label>
+                            <input type="text" class="form-control" id="eshortform" name="eshortform" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ediscription">Description</label>
+                            <input type="text" class="form-control" id="ediscription" name="ediscription" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <script>
+        "use strict";
+
+        let dataTable; // Declare a variable to hold the DataTable instance
+
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch("http://localhost:9090/api/GroupofDoctors")
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data); // Log the data to verify
+                    const tableBody = document.getElementById('doctorTableBody');
+                    tableBody.innerHTML = ''; // Clear existing table body content
+
+                    data.forEach((doctor, index) => {
+                        const row = document.createElement('tr');
+
+                        row.innerHTML = `
+                            <td>${index + 1}</td>
+                            <td>${doctor.degree}</td>
+                            <td>${doctor.shortform}</td>
+                            <td>${doctor.discription}</td>
+                            <td>
+                                <button class="btn btn-default btn-icon-anim btn-square" title="Edit Doctor" data-target="#editDoctorModal" data-toggle="modal" onClick="handleEdit(${doctor.id})">
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+                                <button class="btn btn-danger btn-icon-anim btn-square" title="Delete Doctor" onClick="handleDelete(${doctor.id})">
+                                    <i class="icon-trash"></i>
+                                </button>
+                            </td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+
+                    // Destroy existing DataTable instance if it exists
+                    if ($.fn.DataTable.isDataTable('#datable_1')) {
+                        dataTable.destroy();
+                    }
+
+                    // Initialize DataTables after data is loaded
+                    dataTable = $('#datable_1').DataTable({
+                        "paging": true, // Enable pagination
+                        "searching": true, // Enable search
+                        "ordering": true, // Enable sorting
+                        "order": [[0, 'asc']], // Initial sorting by the first column ascending
+                        "autoWidth": false, // Disable auto width calculation
+                        "responsive": true // Enable responsiveness
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+        function handleEdit(id) {
+            fetch(`http://localhost:9090/api/GroupofDoctors/${id}`)
+                .then(response => response.json())
+                .then(doctor => {
+                    document.getElementById('editDoctorId').value = doctor.id;
+                    document.getElementById('edegree').value = doctor.degree;
+                    document.getElementById('eshortform').value = doctor.shortform;
+                    document.getElementById('ediscription').value = doctor.discription;
+                    $('#editDoctorModal').modal('show');
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        document.getElementById('validationFormedit').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const doctorId = formData.get('id');
+
+            const editedDoctorData = {
+                degree: formData.get('edegree'),
+                shortform: formData.get('eshortform'),
+                discription: formData.get('ediscription')
+            };
+
+            fetch(`http://localhost:9090/api/GroupofDoctors/${doctorId}`, {
+                method: 'PUT',
+                body: JSON.stringify(editedDoctorData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Doctor details updated successfully');
+                    location.reload();
+                } else {
+                    alert('Error updating doctor details');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        function handleDelete(id) {
+            if (confirm('Are you sure you want to delete this doctor?')) {
+                fetch(`http://localhost:9090/api/GroupofDoctors/${id}`, {
+                    method: 'DELETE'
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Doctor deleted successfully');
+                        location.reload();
+                    } else {
+                        alert('Error deleting doctor');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+    </script>
+</body>
+</html>

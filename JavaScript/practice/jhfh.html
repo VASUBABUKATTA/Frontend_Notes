@@ -1,0 +1,2423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from hencework.com/theme/doodle-demo/full-width-light/data-table.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Sep 2020 08:45:28 GMT -->
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <title>Doodle I Fast build Admin dashboard for any platform</title>
+    <meta content="Doodle is a Dashboard & Admin Site Responsive Template by hencework." name="description"/>
+    <meta content="admin, admin dashboard, admin template, cms, crm, Doodle Admin, Doodleadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"
+          name="keywords"/>
+    <meta content="hencework" name="author"/>
+
+    <!-- Favicon -->
+    <link href="favicon.ico" rel="shortcut icon">
+    <link href="favicon.ico" rel="icon" type="image/x-icon">
+
+    <!-- Data table CSS -->
+    <link href="../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
+          type="text/css"/>
+
+    <!-- Custom CSS -->
+    <link href="dist/css/style.css" rel="stylesheet" type="text/css">
+    <!-- jquery  -->
+    <link href="https://jqueryvalidation.org/files/demo/site-demos.css" rel="stylesheet">
+
+
+</head>
+<style>
+    .error-message {
+    color: red;
+  }
+</style>
+
+<body>
+<!--Preloader-->
+<div class="preloader-it">
+    <div class="la-anim-1"></div>
+</div>
+<!--/Preloader-->
+<div class="wrapper theme-1-active pimary-color-red">
+
+    <!-- Top Menu Items -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="mobile-only-brand pull-left">
+            <div class="nav-header pull-left">
+                <div class="logo-wrap">
+                    <a href="index.html">
+                        <img alt="brand" class="brand-img" src="../img/logo.png"/>
+                        <span class="brand-text">doodle</span>
+                    </a>
+                </div>
+            </div>
+            <a class="toggle-left-nav-btn inline-block ml-20 pull-left" href="javascript:void(0);"
+               id="toggle_nav_btn"><i class="zmdi zmdi-menu"></i></a>
+            <a class="mobile-only-view" data-target="#search_form" data-toggle="collapse" href="javascript:void(0);"
+               id="toggle_mobile_search"><i class="zmdi zmdi-search"></i></a>
+            <a class="mobile-only-view" href="javascript:void(0);" id="toggle_mobile_nav"><i class="zmdi zmdi-more"></i></a>
+            <form class="top-nav-search collapse pull-left" id="search_form" role="search">
+                <div class="input-group">
+                    <input class="form-control" name="example-input1-group2" placeholder="Search" type="text">
+                    <span class="input-group-btn">
+                        <button aria-expanded="true" aria-label="Close" class="btn  btn-default"
+                                data-target="#search_form"
+                                data-toggle="collapse" type="button"><i class="zmdi zmdi-search"></i></button>
+                        </span>
+                </div>
+            </form>
+        </div>
+        <div class="mobile-only-nav pull-right" id="mobile_only_nav">
+            <ul class="nav navbar-right top-nav pull-right">
+                <li>
+                    <a href="#" id="open_right_sidebar"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
+                </li>
+                <li class="dropdown app-drp">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i
+                            class="zmdi zmdi-apps top-nav-icon"></i></a>
+                    <ul class="dropdown-menu app-dropdown" data-dropdown-in="slideInRight" data-dropdown-out="flipOutX">
+                        <li>
+                            <div class="app-nicescroll-bar">
+                                <ul class="app-icon-wrap pa-10">
+                                    <li>
+                                        <a class="connection-item" href="weather.html">
+                                            <i class="zmdi zmdi-cloud-outline txt-info"></i>
+                                            <span class="block">weather</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="connection-item" href="inbox.html">
+                                            <i class="zmdi zmdi-email-open txt-success"></i>
+                                            <span class="block">e-mail</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="connection-item" href="calendar.html">
+                                            <i class="zmdi zmdi-calendar-check txt-primary"></i>
+                                            <span class="block">calendar</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="connection-item" href="vector-map.html">
+                                            <i class="zmdi zmdi-map txt-danger"></i>
+                                            <span class="block">map</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="connection-item" href="chats.html">
+                                            <i class="zmdi zmdi-comment-outline txt-warning"></i>
+                                            <span class="block">chat</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="connection-item" href="contact-card.html">
+                                            <i class="zmdi zmdi-assignment-account"></i>
+                                            <span class="block">contact</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="app-box-bottom-wrap">
+                                <hr class="light-grey-hr ma-0"/>
+                                <a class="block text-center read-all" href="javascript:void(0)"> more </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown full-width-drp">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i
+                            class="zmdi zmdi-more-vert top-nav-icon"></i></a>
+                    <ul class="dropdown-menu mega-menu pa-0" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                        <li class="product-nicescroll-bar row">
+                            <ul class="pa-20">
+                                <li class="col-md-3 col-xs-6 col-menu-list">
+                                    <a href="javascript:void(0);">
+                                        <div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span
+                                                class="right-nav-text">Dashboard</span></div>
+                                        <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                    <hr class="light-grey-hr ma-0"/>
+                                    <ul>
+                                        <li>
+                                            <a href="index.html">Analytical</a>
+                                        </li>
+                                        <li>
+                                            <a href="index2.html">Demographic</a>
+                                        </li>
+                                        <li>
+                                            <a href="index3.html">Project</a>
+                                        </li>
+                                        <li>
+                                            <a href="profile.html">profile</a>
+                                        </li>
+                                    </ul>
+                                    <a href="widgets.html">
+                                        <div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span
+                                                class="right-nav-text">widgets</span></div>
+                                        <div class="pull-right"><span class="label label-warning">8</span></div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                    <hr class="light-grey-hr ma-0"/>
+                                    <a href="documentation.html">
+                                        <div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span
+                                                class="right-nav-text">documentation</span></div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                    <hr class="light-grey-hr ma-0"/>
+                                </li>
+                                <li class="col-md-3 col-xs-6 col-menu-list">
+                                    <a href="javascript:void(0);">
+                                        <div class="pull-left">
+                                            <i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span>
+                                        </div>
+                                        <div class="pull-right"><span class="label label-success">hot</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                    <hr class="light-grey-hr ma-0"/>
+                                    <ul>
+                                        <li>
+                                            <a href="e-commerce.html">Dashboard</a>
+                                        </li>
+                                        <li>
+                                            <a href="product.html">Products</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-detail.html">Product Detail</a>
+                                        </li>
+                                        <li>
+                                            <a href="add-products.html">Add Product</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-orders.html">Orders</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-cart.html">Cart</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-checkout.html">Checkout</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="col-md-6 col-xs-12 preview-carousel">
+                                    <a href="javascript:void(0);">
+                                        <div class="pull-left"><span class="right-nav-text">latest products</span></div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                    <hr class="light-grey-hr ma-0"/>
+                                    <div class="product-carousel owl-carousel owl-theme text-center">
+                                        <a href="#">
+                                            <img alt="chair" src="../img/chair.jpg">
+                                            <span>Circle chair</span>
+                                        </a>
+                                        <a href="#">
+                                            <img alt="chair" src="../img/chair2.jpg">
+                                            <span>square chair</span>
+                                        </a>
+                                        <a href="#">
+                                            <img alt="chair" src="../img/chair3.jpg">
+                                            <span>semi circle chair</span>
+                                        </a>
+                                        <a href="#">
+                                            <img alt="chair" src="../img/chair4.jpg">
+                                            <span>wooden chair</span>
+                                        </a>
+                                        <a href="#">
+                                            <img alt="chair" src="../img/chair2.jpg">
+                                            <span>square chair</span>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown alert-drp">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i
+                            class="zmdi zmdi-notifications top-nav-icon"></i><span
+                            class="top-nav-icon-badge">5</span></a>
+                    <ul class="dropdown-menu alert-dropdown" data-dropdown-in="bounceIn" data-dropdown-out="bounceOut">
+                        <li>
+                            <div class="notification-box-head-wrap">
+                                <span class="notification-box-head pull-left inline-block">notifications</span>
+                                <a class="txt-danger pull-right clear-notifications inline-block"
+                                   href="javascript:void(0)"> clear all </a>
+                                <div class="clearfix"></div>
+                                <hr class="light-grey-hr ma-0"/>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="streamline message-nicescroll-bar">
+                                <div class="sl-item">
+                                    <a href="javascript:void(0)">
+                                        <div class="icon bg-green">
+                                            <i class="zmdi zmdi-flag"></i>
+                                        </div>
+                                        <div class="sl-content">
+                                                <span class="inline-block capitalize-font  pull-left truncate head-notifications">
+                                                New subscription created</span>
+                                            <span class="inline-block font-11  pull-right notifications-time">2pm</span>
+                                            <div class="clearfix"></div>
+                                            <p class="truncate">Your customer subscribed for the basic plan. The
+                                                customer will pay $25 per month.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <hr class="light-grey-hr ma-0"/>
+                                <div class="sl-item">
+                                    <a href="javascript:void(0)">
+                                        <div class="icon bg-yellow">
+                                            <i class="zmdi zmdi-trending-down"></i>
+                                        </div>
+                                        <div class="sl-content">
+                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications txt-warning">Server #2 not responding</span>
+                                            <span class="inline-block font-11 pull-right notifications-time">1pm</span>
+                                            <div class="clearfix"></div>
+                                            <p class="truncate">Some technical error occurred needs to be resolved.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <hr class="light-grey-hr ma-0"/>
+                                <div class="sl-item">
+                                    <a href="javascript:void(0)">
+                                        <div class="icon bg-blue">
+                                            <i class="zmdi zmdi-email"></i>
+                                        </div>
+                                        <div class="sl-content">
+                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications">2 new messages</span>
+                                            <span class="inline-block font-11  pull-right notifications-time">4pm</span>
+                                            <div class="clearfix"></div>
+                                            <p class="truncate"> The last payment for your G Suite Basic subscription
+                                                failed.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <hr class="light-grey-hr ma-0"/>
+                                <div class="sl-item">
+                                    <a href="javascript:void(0)">
+                                        <div class="sl-avatar">
+                                            <img alt="avatar" class="img-responsive" src="../img/avatar.jpg"/>
+                                        </div>
+                                        <div class="sl-content">
+                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
+                                            <span class="inline-block font-11  pull-right notifications-time">1pm</span>
+                                            <div class="clearfix"></div>
+                                            <p class="truncate">Neque porro quisquam est qui dolorem ipsum quia dolor
+                                                sit amet, consectetur, adipisci velit</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <hr class="light-grey-hr ma-0"/>
+                                <div class="sl-item">
+                                    <a href="javascript:void(0)">
+                                        <div class="icon bg-red">
+                                            <i class="zmdi zmdi-storage"></i>
+                                        </div>
+                                        <div class="sl-content">
+                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications txt-danger">99% server space occupied.</span>
+                                            <span class="inline-block font-11  pull-right notifications-time">1pm</span>
+                                            <div class="clearfix"></div>
+                                            <p class="truncate">consectetur, adipisci velit.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="notification-box-bottom-wrap">
+                                <hr class="light-grey-hr ma-0"/>
+                                <a class="block text-center read-all" href="javascript:void(0)"> read all </a>
+                                <div class="clearfix"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown auth-drp">
+                    <a class="dropdown-toggle pr-0" data-toggle="dropdown" href="#"><img alt="user_auth"
+                                                                                         class="user-auth-img img-circle"
+                                                                                         src="../img/user1.png"/><span
+                            class="user-online-status"></span></a>
+                    <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX"
+                        data-dropdown-out="flipOutX">
+                        <li>
+                            <a href="profile.html"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="zmdi zmdi-card"></i><span>my balance</span></a>
+                        </li>
+                        <li>
+                            <a href="inbox.html"><i class="zmdi zmdi-email"></i><span>Inbox</span></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="zmdi zmdi-settings"></i><span>Settings</span></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="sub-menu show-on-hover">
+                            <a class="dropdown-toggle pr-0 level-2-drp" href="#"><i
+                                    class="zmdi zmdi-check text-success"></i> available</a>
+                            <ul class="dropdown-menu open-left-side">
+                                <li>
+                                    <a href="#"><i class="zmdi zmdi-check text-success"></i><span>available</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="zmdi zmdi-circle-o text-warning"></i><span>busy</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i
+                                            class="zmdi zmdi-minus-circle-outline text-danger"></i><span>offline</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#"><i class="zmdi zmdi-power"></i><span>Log Out</span></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- /Top Menu Items -->
+
+    <!-- Left Sidebar Menu -->
+    <div class="fixed-sidebar-left">
+        <ul class="nav navbar-nav side-nav nicescroll-bar">
+            <li class="navigation-header">
+                <span>Main</span>
+                <i class="zmdi zmdi-more"></i>
+            </li>
+            <li>
+                <a data-target="#dashboard_dr" data-toggle="collapse" href="javascript:void(0);">
+                    <div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span>
+                    </div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
+                <ul class="collapse collapse-level-1" id="dashboard_dr">
+                    <li>
+                        <a href="index.html">Analytical</a>
+                    </li>
+                    <li>
+                        <a href="index2.html">Demographic</a>
+                    </li>
+                    <li>
+                        <a href="index3.html">Project</a>
+                    </li>
+                    <li>
+                        <a href="profile.html">profile</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a data-target="#ecom_dr" data-toggle="collapse" href="javascript:void(0);">
+                    <div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span>
+                    </div>
+                    <div class="pull-right"><span class="label label-success">hot</span></div>
+                    <div class="clearfix"></div>
+                </a>
+                <ul class="collapse collapse-level-1" id="ecom_dr">
+                    <li>
+                        <a href="e-commerce.html">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="product.html">Products</a>
+                    </li>
+                    <li>
+                        <a href="product-detail.html">Product Detail</a>
+                    </li>
+                    <li>
+                        <a href="add-products.html">Add Product</a>
+                    </li>
+                    <li>
+                        <a href="product-orders.html">Orders</a>
+                    </li>
+                    <li>
+                        <a href="product-cart.html">Cart</a>
+                    </li>
+                    <li>
+                        <a href="product-checkout.html">Checkout</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a data-target="#app_dr" data-toggle="collapse" href="javascript:void(0);">
+                    <div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Apps </span>
+                    </div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
+                <ul class="collapse collapse-level-1" id="app_dr">
+                    <li>
+                        <a href="chats.html">chats</a>
+                    </li>
+                    <li>
+                        <a href="calendar.html">calendar</a>
+                    </li>
+                    <li>
+                        <a href="weather.html">weather</a>
+                    </li>
+                    <li>
+                        <a data-target="#email_dr" data-toggle="collapse" href="javascript:void(0);">Email
+                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul class="collapse collapse-level-2" id="email_dr">
+                            <li>
+                                <a href="inbox.html">inbox</a>
+                            </li>
+                            <li>
+                                <a href="inbox-detail.html">detail email</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a data-target="#contact_dr" data-toggle="collapse" href="javascript:void(0);">Contacts
+                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul class="collapse collapse-level-2" id="contact_dr">
+                            <li>
+                                <a href="contact-list.html">list</a>
+                            </li>
+                            <li>
+                                <a href="contact-card.html">cards</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="file-manager.html">File Manager</a>
+                    </li>
+                    <li>
+                        <a href="todo-tasklist.html">To Do/Tasklist</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="widgets.html">
+                    <div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span
+                            class="right-nav-text">widgets</span></div>
+                    <div class="pull-right"><span class="label label-warning">8</span></div>
+                    <div class="clearfix"></div>
+                </a>
+            </li>
+            <li>
+                <hr class="light-grey-hr mb-10"/>
+            </li>
+            <li class="navigation-header">
+                <span>component</span>
+                <i class="zmdi zmdi-more"></i>
+            </li>
+            <li>
+                <a data-target="#ui_dr" data-toggle="collapse" href="javascript:void(0);">
+                    <div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">UI Elements</span>
+                    </div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
+                <ul class="collapse collapse-level-1 two-col-list" id="ui_dr">
+                    <li>
+                        <a href="panels-wells.html">Panels & Wells</a>
+                    </li>
+                    <li>
+                        <a href="modals.html">Modals</a>
+                    </li>
+                    <li>
+                        <a href="sweetalert.html">Sweet Alerts</a>
+                    </li>
+                    <li>
+                        <a href="notifications.html">notifications</a>
+                    </li>
+                    <li>
+                        <a href="typography.html">Typography</a>
+                    </li>
+                    <li>
+                        <a href="buttons.html">Buttons</a>
+                    </li>
+                    <li>
+                        <a href="accordion-toggle.html">Accordion / Toggles</a>
+                    </li>
+                    <li>
+                        <a href="tabs.html">Tabs</a>
+                    </li>
+                    <li>
+                        <a href="progressbars.html">Progress bars</a>
+                    </li>
+                    <li>
+                        <a href="skills-counter.html">Skills & Counters</a>
+                    </li>
+                    <li>
+                        <a href="pricing.html">Pricing Tables</a>
+                    </li>
+                    <li>
+                        <a href="nestable.html">Nestables</a>
+                    </li>
+                    <li>
+                        <a href="dorpdown.html">Dropdowns</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-treeview.html">Tree View</a>
+                    </li>
+                    <li>
+                        <a href="carousel.html">Carousel</a>
+                    </li>
+                    <li>
+                        <a href="range-slider.html">Range Slider</a>
+                    </li>
+                    <li>
+                        <a href="grid-styles.html">Grid</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-ui.html">Bootstrap UI</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a data-target="#form_dr" data-toggle="collapse" href="javascript:void(0);">
+                    <div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span>
+                    </div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
+                <ul class="collapse collapse-level-1 two-col-list" id="form_dr">
+                    <li>
+                        <a href="form-element.html">Basic Forms</a>
+                    </li>
+                    <li>
+                        <a href="form-layout.html">form Layout</a>
+                    </li>
+                    <li>
+                        <a href="form-advanced.html">Form Advanced</a>
+                    </li>
+                    <li>
+                        <a href="form-mask.html">Form Mask</a>
+                    </li>
+                    <li>
+                        <a href="form-picker.html">Form Picker</a>
+                    </li>
+                    <li>
+                        <a href="form-validation.html">form Validation</a>
+                    </li>
+                    <li>
+                        <a href="form-wizard.html">Form Wizard</a>
+                    </li>
+                    <li>
+                        <a href="form-x-editable.html">X-Editable</a>
+                    </li>
+                    <li>
+                        <a href="cropperjs.html">Cropperjs</a>
+                    </li>
+                    <li>
+                        <a href="form-file-upload.html">File Upload</a>
+                    </li>
+                    <li>
+                        <a href="dropzone.html">Dropzone</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-wysihtml5.html">Bootstrap Wysihtml5</a>
+                    </li>
+                    <li>
+                        <a href="tinymce-wysihtml5.html">Tinymce Wysihtml5</a>
+                    </li>
+                    <li>
+                        <a href="summernote-wysihtml5.html">summernote</a>
+                    </li>
+                    <li>
+                        <a href="typeahead-js.html">typeahead</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a data-target="#chart_dr" data-toggle="collapse" href="javascript:void(0);">
+                    <div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span>
+                    </div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
+                <ul class="collapse collapse-level-1 two-col-list" id="chart_dr">
+                    <li>
+                        <a href="flot-chart.html">Flot Chart</a>
+                    </li>
+                    <li>
+                        <a href="morris-chart.html">Morris Chart</a>
+                    </li>
+                    <li>
+                        <a href="chart.js.html">chartjs</a>
+                    </li>
+                    <li>
+                        <a href="chartist.html">chartist</a>
+                    </li>
+                    <li>
+                        <a href="easy-pie-chart.html">Easy Pie Chart</a>
+                    </li>
+                    <li>
+                        <a href="sparkline.html">Sparkline</a>
+                    </li>
+                    <li>
+                        <a href="peity-chart.html">Peity Chart</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="active" data-target="#table_dr" data-toggle="collapse" href="javascript:void(0);">
+                    <div class="pull-left"><i class="zmdi zmdi-format-size mr-20"></i><span class="right-nav-text">Tables</span>
+                    </div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
+                <ul class="collapse collapse-level-1 two-col-list" id="table_dr">
+                    <li>
+                        <a href="basic-table.html">Basic Table</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-table.html">Bootstrap Table</a>
+                    </li>
+                    <li>
+                        <a class="active-page" href="data-table.html">Data Table</a>
+                    </li>
+                    <li>
+                        <a href="export-table.html"><span class="pull-right"><span class="label label-danger">New</span></span>Export
+                            Table</a>
+                    </li>
+                    <li>
+                        <a href="responsive-data-table.html"><span class="pull-right"><span class="label label-danger">New</span></span>RSPV
+                            DataTable</a>
+                    </li>
+                    <li>
+                        <a href="responsive-table.html">Responsive Table</a>
+                    </li>
+                    <li>
+                        <a href="editable-table.html">Editable Table</a>
+                    </li>
+                    <li>
+                        <a href="foo-table.html">Foo Table</a>
+                    </li>
+                    <li>
+                        <a href="jsgrid-table.html">Jsgrid Table</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a data-target="#icon_dr" data-toggle="collapse" href="javascript:void(0);">
+                    <div class="pull-left"><i class="zmdi zmdi-iridescent mr-20"></i><span
+                            class="right-nav-text">Icons</span></div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
+                <ul class="collapse collapse-level-1" id="icon_dr">
+                    <li>
+                        <a href="fontawesome.html">Fontawesome</a>
+                    </li>
+                    <li>
+                        <a href="themify.html">Themify</a>
+                    </li>
+                    <li>
+                        <a href="linea-icon.html">Linea</a>
+                    </li>
+                    <li>
+                        <a href="simple-line-icons.html">Simple Line</a>
+                    </li>
+                    <li>
+                        <a href="pe-icon-7.html">Pe-icon-7</a>
+                    </li>
+                    <li>
+                        <a href="glyphicons.html">Glyphicons</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a data-target="#maps_dr" data-toggle="collapse" href="javascript:void(0);">
+                    <div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">maps</span>
+                    </div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
+                <ul class="collapse collapse-level-1" id="maps_dr">
+                    <li>
+                        <a href="vector-map.html">Vector Map</a>
+                    </li>
+                    <li>
+                        <a href="google-map.html">Google Map</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <hr class="light-grey-hr mb-10"/>
+            </li>
+            <li class="navigation-header">
+                <span>featured</span>
+                <i class="zmdi zmdi-more"></i>
+            </li>
+            <li>
+                <a data-target="#pages_dr" data-toggle="collapse" href="settings.html">
+                    <div class="pull-left"><i class="zmdi zmdi-settings top-nav-icon mr-20"></i><span
+                            class="right-nav-text">Settings</span>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </a>
+
+            </li>
+
+            <li>
+                <a data-target="#pages_dr" data-toggle="collapse" href="javascript:void(0);">
+                    <div class="pull-left"><i class="zmdi zmdi-google-pages mr-20"></i><span class="right-nav-text">Special Pages</span>
+                    </div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
+                <ul class="collapse collapse-level-1 two-col-list" id="pages_dr">
+                    <li>
+                        <a href="blank.html">Blank Page</a>
+                    </li>
+                    <li>
+                        <a data-target="#auth_dr" data-toggle="collapse" href="javascript:void(0);">Authantication pages
+                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul class="collapse collapse-level-2" id="auth_dr">
+                            <li>
+                                <a href="login.html">Login</a>
+                            </li>
+                            <li>
+                                <a href="signup.html">Register</a>
+                            </li>
+                            <li>
+                                <a href="forgot-password.html">Recover Password</a>
+                            </li>
+                            <li>
+                                <a href="reset-password.html">reset Password</a>
+                            </li>
+                            <li>
+                                <a href="locked.html">Lock Screen</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a data-target="#invoice_dr" data-toggle="collapse" href="javascript:void(0);">Invoice
+                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul class="collapse collapse-level-2" id="invoice_dr">
+                            <li>
+                                <a href="invoice.html">Invoice</a>
+                            </li>
+                            <li>
+                                <a href="invoice-archive.html">Invoice Archive</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a data-target="#error_dr" data-toggle="collapse" href="javascript:void(0);">error pages
+                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul class="collapse collapse-level-2" id="error_dr">
+                            <li>
+                                <a href="404.html">Error 404</a>
+                            </li>
+                            <li>
+                                <a href="500.html">Error 500</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="gallery.html">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="timeline.html">Timeline</a>
+                    </li>
+                    <li>
+                        <a href="faq.html">FAQ</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="documentation.html">
+                    <div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">documentation</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </a>
+            </li>
+            <li>
+                <a data-target="#dropdown_dr_lv1" data-toggle="collapse" href="javascript:void(0);">
+                    <div class="pull-left"><i class="zmdi zmdi-filter-list mr-20"></i><span class="right-nav-text">multilevel</span>
+                    </div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
+                <ul class="collapse collapse-level-1" id="dropdown_dr_lv1">
+                    <li>
+                        <a href="#">Item level 1</a>
+                    </li>
+                    <li>
+                        <a data-target="#dropdown_dr_lv2" data-toggle="collapse" href="javascript:void(0);">Dropdown
+                            level 2
+                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul class="collapse collapse-level-2" id="dropdown_dr_lv2">
+                            <li>
+                                <a href="#">Item level 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Item level 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- /Left Sidebar Menu -->
+
+    <!-- Right Sidebar Menu -->
+    <div class="fixed-sidebar-right">
+        <ul class="right-sidebar">
+            <li>
+                <div class="tab-struct custom-tab-1">
+                    <ul class="nav nav-tabs" id="right_sidebar_tab" role="tablist">
+                        <li class="active" role="presentation"><a aria-expanded="true" data-toggle="tab"
+                                                                  href="#chat_tab"
+                                                                  id="chat_tab_btn" role="tab">chat</a></li>
+                        <li class="" role="presentation"><a aria-expanded="false" data-toggle="tab" href="#messages_tab"
+                                                            id="messages_tab_btn" role="tab">messages</a></li>
+                        <li class="" role="presentation"><a aria-expanded="false" data-toggle="tab" href="#todo_tab"
+                                                            id="todo_tab_btn" role="tab">todo</a></li>
+                    </ul>
+                    <div class="tab-content" id="right_sidebar_content">
+                        <div class="tab-pane fade active in" id="chat_tab" role="tabpanel">
+                            <div class="chat-cmplt-wrap">
+                                <div class="chat-box-wrap">
+                                    <div class="add-friend">
+                                        <a class="inline-block txt-grey" href="javascript:void(0)">
+                                            <i class="zmdi zmdi-more"></i>
+                                        </a>
+                                        <span class="inline-block txt-dark">users</span>
+                                        <a class="inline-block text-right txt-grey" href="javascript:void(0)"><i
+                                                class="zmdi zmdi-plus"></i></a>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <form class="chat-search pl-15 pr-15 pb-15" role="search">
+                                        <div class="input-group">
+                                            <input class="form-control" id="example-input1-group2"
+                                                   name="example-input1-group2"
+                                                   placeholder="Search" type="text">
+                                            <span class="input-group-btn">
+                                                <button class="btn  btn-default" type="button"><i
+                                                        class="zmdi zmdi-search"></i></button>
+                                                </span>
+                                        </div>
+                                    </form>
+                                    <div id="chat_list_scroll">
+                                        <div class="nicescroll-bar">
+                                            <ul class="chat-list-wrap">
+                                                <li class="chat-list">
+                                                    <div class="chat-body">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="chat-data">
+                                                                <img alt="user" class="user-img img-circle"
+                                                                     src="../img/user.png"/>
+                                                                <div class="user-data">
+                                                                    <span class="name block capitalize-font">Clay Masse</span>
+                                                                    <span class="time block truncate txt-grey">No one saves us but ourselves.</span>
+                                                                </div>
+                                                                <div class="status away"></div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </a>
+                                                        <a href="javascript:void(0)">
+                                                            <div class="chat-data">
+                                                                <img alt="user" class="user-img img-circle"
+                                                                     src="../img/user1.png"/>
+                                                                <div class="user-data">
+                                                                    <span class="name block capitalize-font">Evie Ono</span>
+                                                                    <span class="time block truncate txt-grey">Unity is strength</span>
+                                                                </div>
+                                                                <div class="status offline"></div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </a>
+                                                        <a href="javascript:void(0)">
+                                                            <div class="chat-data">
+                                                                <img alt="user" class="user-img img-circle"
+                                                                     src="../img/user2.png"/>
+                                                                <div class="user-data">
+                                                                    <span class="name block capitalize-font">Madalyn Rascon</span>
+                                                                    <span class="time block truncate txt-grey">Respect yourself if you would have others respect you.</span>
+                                                                </div>
+                                                                <div class="status online"></div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </a>
+                                                        <a href="javascript:void(0)">
+                                                            <div class="chat-data">
+                                                                <img alt="user" class="user-img img-circle"
+                                                                     src="../img/user3.png"/>
+                                                                <div class="user-data">
+                                                                    <span class="name block capitalize-font">Mitsuko Heid</span>
+                                                                    <span class="time block truncate txt-grey">I’m thankful.</span>
+                                                                </div>
+                                                                <div class="status online"></div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </a>
+                                                        <a href="javascript:void(0)">
+                                                            <div class="chat-data">
+                                                                <img alt="user" class="user-img img-circle"
+                                                                     src="../img/user.png"/>
+                                                                <div class="user-data">
+                                                                    <span class="name block capitalize-font">Ezequiel Merideth</span>
+                                                                    <span class="time block truncate txt-grey">Patience is bitter.</span>
+                                                                </div>
+                                                                <div class="status offline"></div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </a>
+                                                        <a href="javascript:void(0)">
+                                                            <div class="chat-data">
+                                                                <img alt="user" class="user-img img-circle"
+                                                                     src="../img/user1.png"/>
+                                                                <div class="user-data">
+                                                                    <span class="name block capitalize-font">Jonnie Metoyer</span>
+                                                                    <span class="time block truncate txt-grey">Genius is eternal patience.</span>
+                                                                </div>
+                                                                <div class="status online"></div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </a>
+                                                        <a href="javascript:void(0)">
+                                                            <div class="chat-data">
+                                                                <img alt="user" class="user-img img-circle"
+                                                                     src="../img/user2.png"/>
+                                                                <div class="user-data">
+                                                                    <span class="name block capitalize-font">Angelic Lauver</span>
+                                                                    <span class="time block truncate txt-grey">Every burden is a blessing.</span>
+                                                                </div>
+                                                                <div class="status away"></div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </a>
+                                                        <a href="javascript:void(0)">
+                                                            <div class="chat-data">
+                                                                <img alt="user" class="user-img img-circle"
+                                                                     src="../img/user3.png"/>
+                                                                <div class="user-data">
+                                                                    <span class="name block capitalize-font">Priscila Shy</span>
+                                                                    <span class="time block truncate txt-grey">Wise to resolve, and patient to perform.</span>
+                                                                </div>
+                                                                <div class="status online"></div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </a>
+                                                        <a href="javascript:void(0)">
+                                                            <div class="chat-data">
+                                                                <img alt="user" class="user-img img-circle"
+                                                                     src="../img/user4.png"/>
+                                                                <div class="user-data">
+                                                                    <span class="name block capitalize-font">Linda Stack</span>
+                                                                    <span class="time block truncate txt-grey">Our patience will achieve more than our force.</span>
+                                                                </div>
+                                                                <div class="status away"></div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="recent-chat-box-wrap">
+                                    <div class="recent-chat-wrap">
+                                        <div class="panel-heading ma-0">
+                                            <div class="goto-back">
+                                                <a class="inline-block txt-grey" href="javascript:void(0)"
+                                                   id="goto_back">
+                                                    <i class="zmdi zmdi-chevron-left"></i>
+                                                </a>
+                                                <span class="inline-block txt-dark">ryan</span>
+                                                <a class="inline-block text-right txt-grey" href="javascript:void(0)"><i
+                                                        class="zmdi zmdi-more"></i></a>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                        <div class="panel-wrapper collapse in">
+                                            <div class="panel-body pa-0">
+                                                <div class="chat-content">
+                                                    <ul class="nicescroll-bar pt-20">
+                                                        <li class="friend">
+                                                            <div class="friend-msg-wrap">
+                                                                <img alt="user"
+                                                                     class="user-img img-circle block pull-left"
+                                                                     src="../img/user.png"/>
+                                                                <div class="msg pull-left">
+                                                                    <p>Hello Jason, how are you, it's been a long time
+                                                                        since we last met?</p>
+                                                                    <div class="msg-per-detail text-right">
+                                                                        <span class="msg-time txt-grey">2:30 PM</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="self mb-10">
+                                                            <div class="self-msg-wrap">
+                                                                <div class="msg block pull-right"> Oh, hi Sarah I'm have
+                                                                    got a new job now and is going great.
+                                                                    <div class="msg-per-detail text-right">
+                                                                        <span class="msg-time txt-grey">2:31 pm</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="self">
+                                                            <div class="self-msg-wrap">
+                                                                <div class="msg block pull-right"> How about you?
+                                                                    <div class="msg-per-detail text-right">
+                                                                        <span class="msg-time txt-grey">2:31 pm</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="friend">
+                                                            <div class="friend-msg-wrap">
+                                                                <img alt="user"
+                                                                     class="user-img img-circle block pull-left"
+                                                                     src="../img/user.png"/>
+                                                                <div class="msg pull-left">
+                                                                    <p>Not too bad.</p>
+                                                                    <div class="msg-per-detail  text-right">
+                                                                        <span class="msg-time txt-grey">2:35 pm</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="input-group">
+                                                    <input class="input-msg-send form-control" id="input_msg_send"
+                                                           name="send-msg"
+                                                           placeholder="Type something"
+                                                           type="text">
+                                                    <div class="input-group-btn emojis">
+                                                        <div class="dropup">
+                                                            <button class="btn  btn-default  dropdown-toggle"
+                                                                    data-toggle="dropdown"
+                                                                    type="button"><i
+                                                                    class="zmdi zmdi-mood"></i></button>
+                                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                                <li><a href="javascript:void(0)">Action</a></li>
+                                                                <li><a href="javascript:void(0)">Another action</a></li>
+                                                                <li class="divider"></li>
+                                                                <li><a href="javascript:void(0)">Separated link</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-group-btn attachment">
+                                                        <div class="fileupload btn  btn-default"><i
+                                                                class="zmdi zmdi-attachment-alt"></i>
+                                                            <input class="upload" type="file">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="messages_tab" role="tabpanel">
+                            <div class="message-box-wrap">
+                                <div class="msg-search">
+                                    <a class="inline-block txt-grey" href="javascript:void(0)">
+                                        <i class="zmdi zmdi-more"></i>
+                                    </a>
+                                    <span class="inline-block txt-dark">messages</span>
+                                    <a class="inline-block text-right txt-grey" href="javascript:void(0)"><i
+                                            class="zmdi zmdi-search"></i></a>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="set-height-wrap">
+                                    <div class="streamline message-box nicescroll-bar">
+                                        <a href="javascript:void(0)">
+                                            <div class="sl-item unread-message">
+                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
+                                                    <img alt="avatar" class="img-responsive img-circle"
+                                                         src="../img/user.png"/>
+                                                </div>
+                                                <div class="sl-content">
+                                                    <span class="inline-block capitalize-font   pull-left message-per">Clay Masse</span>
+                                                    <span class="inline-block font-11  pull-right message-time">12:28 AM</span>
+                                                    <div class="clearfix"></div>
+                                                    <span class=" truncate message-subject">Themeforest message sent via your envato market profile</span>
+                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
+                                                        ipsu messm quia dolor sit amet, consectetur, adipisci velit</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0)">
+                                            <div class="sl-item">
+                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
+                                                    <img alt="avatar" class="img-responsive img-circle"
+                                                         src="../img/user1.png"/>
+                                                </div>
+                                                <div class="sl-content">
+                                                    <span class="inline-block capitalize-font   pull-left message-per">Evie Ono</span>
+                                                    <span class="inline-block font-11  pull-right message-time">1 Feb</span>
+                                                    <div class="clearfix"></div>
+                                                    <span class=" truncate message-subject">Pogody theme support</span>
+                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
+                                                        ipsum quia dolor sit amet, consectetur, adipisci velit</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0)">
+                                            <div class="sl-item">
+                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
+                                                    <img alt="avatar" class="img-responsive img-circle"
+                                                         src="../img/user2.png"/>
+                                                </div>
+                                                <div class="sl-content">
+                                                    <span class="inline-block capitalize-font   pull-left message-per">Madalyn Rascon</span>
+                                                    <span class="inline-block font-11  pull-right message-time">31 Jan</span>
+                                                    <div class="clearfix"></div>
+                                                    <span class=" truncate message-subject">Congratulations from design nominees</span>
+                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
+                                                        ipsum quia dolor sit amet, consectetur, adipisci velit</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0)">
+                                            <div class="sl-item unread-message">
+                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
+                                                    <img alt="avatar" class="img-responsive img-circle"
+                                                         src="../img/user3.png"/>
+                                                </div>
+                                                <div class="sl-content">
+                                                    <span class="inline-block capitalize-font   pull-left message-per">Ezequiel Merideth</span>
+                                                    <span class="inline-block font-11  pull-right message-time">29 Jan</span>
+                                                    <div class="clearfix"></div>
+                                                    <span class=" truncate message-subject">Themeforest item support message</span>
+                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
+                                                        ipsum quia dolor sit amet, consectetur, adipisci velit</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0)">
+                                            <div class="sl-item unread-message">
+                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
+                                                    <img alt="avatar" class="img-responsive img-circle"
+                                                         src="../img/user4.png"/>
+                                                </div>
+                                                <div class="sl-content">
+                                                    <span class="inline-block capitalize-font   pull-left message-per">Jonnie Metoyer</span>
+                                                    <span class="inline-block font-11  pull-right message-time">27 Jan</span>
+                                                    <div class="clearfix"></div>
+                                                    <span class=" truncate message-subject">Help with beavis contact form</span>
+                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
+                                                        ipsum quia dolor sit amet, consectetur, adipisci velit</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0)">
+                                            <div class="sl-item">
+                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
+                                                    <img alt="avatar" class="img-responsive img-circle"
+                                                         src="../img/user.png"/>
+                                                </div>
+                                                <div class="sl-content">
+                                                    <span class="inline-block capitalize-font   pull-left message-per">Priscila Shy</span>
+                                                    <span class="inline-block font-11  pull-right message-time">19 Jan</span>
+                                                    <div class="clearfix"></div>
+                                                    <span class=" truncate message-subject">Your uploaded theme is been selected</span>
+                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
+                                                        ipsum quia dolor sit amet, consectetur, adipisci velit</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0)">
+                                            <div class="sl-item">
+                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
+                                                    <img alt="avatar" class="img-responsive img-circle"
+                                                         src="../img/user1.png"/>
+                                                </div>
+                                                <div class="sl-content">
+                                                    <span class="inline-block capitalize-font   pull-left message-per">Linda Stack</span>
+                                                    <span class="inline-block font-11  pull-right message-time">13 Jan</span>
+                                                    <div class="clearfix"></div>
+                                                    <span class=" truncate message-subject"> A new rating has been received</span>
+                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
+                                                        ipsum quia dolor sit amet, consectetur, adipisci velit</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="todo_tab" role="tabpanel">
+                            <div class="todo-box-wrap">
+                                <div class="add-todo">
+                                    <a class="inline-block txt-grey" href="javascript:void(0)">
+                                        <i class="zmdi zmdi-more"></i>
+                                    </a>
+                                    <span class="inline-block txt-dark">todo list</span>
+                                    <a class="inline-block text-right txt-grey" href="javascript:void(0)"><i
+                                            class="zmdi zmdi-plus"></i></a>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="set-height-wrap">
+                                    <!-- Todo-List -->
+                                    <ul class="todo-list nicescroll-bar">
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-default">
+                                                <input id="checkbox01" type="checkbox"/>
+                                                <label for="checkbox01">Record The First Episode</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-pink">
+                                                <input id="checkbox02" type="checkbox"/>
+                                                <label for="checkbox02">Prepare The Conference Schedule</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input checked id="checkbox03" type="checkbox"/>
+                                                <label for="checkbox03">Decide The Live Discussion Time</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-success">
+                                                <input checked id="checkbox04" type="checkbox"/>
+                                                <label for="checkbox04">Prepare For The Next Project</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-danger">
+                                                <input checked id="checkbox05" type="checkbox"/>
+                                                <label for="checkbox05">Finish Up AngularJs Tutorial</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-purple">
+                                                <input checked id="checkbox06" type="checkbox"/>
+                                                <label for="checkbox06">Finish Infinity Project</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                    </ul>
+                                    <!-- /Todo-List -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- /Right Sidebar Menu -->
+
+    <!-- Right Setting Menu -->
+    <div class="setting-panel">
+        <ul class="right-sidebar nicescroll-bar pa-0">
+            <li class="layout-switcher-wrap">
+                <ul>
+                    <li>
+                        <span class="layout-title">Scrollable sidebar</span>
+                        <span class="layout-switcher">
+                                <input class="js-switch" data-color="#ea6c41" data-secondary-color="#878787"
+                                       data-size="small"
+                                       id="switch_3" type="checkbox"/>
+                            </span>
+                        <h6 class="mt-30 mb-15">Theme colors</h6>
+                        <ul class="theme-option-wrap">
+                            <li class="active-theme" id="theme-1"><i class="zmdi zmdi-check"></i></li>
+                            <li id="theme-2"><i class="zmdi zmdi-check"></i></li>
+                            <li id="theme-3"><i class="zmdi zmdi-check"></i></li>
+                            <li id="theme-4"><i class="zmdi zmdi-check"></i></li>
+                            <li id="theme-5"><i class="zmdi zmdi-check"></i></li>
+                            <li id="theme-6"><i class="zmdi zmdi-check"></i></li>
+                        </ul>
+                        <h6 class="mt-30 mb-15">Primary colors</h6>
+                        <div class="radio mb-5">
+                            <input checked id="pimary-color-red" name="radio-primary-color" type="radio"
+                                   value="pimary-color-red">
+                            <label for="pimary-color-red"> Red </label>
+                        </div>
+                        <div class="radio mb-5">
+                            <input id="pimary-color-blue" name="radio-primary-color" type="radio"
+                                   value="pimary-color-blue">
+                            <label for="pimary-color-blue"> Blue </label>
+                        </div>
+                        <div class="radio mb-5">
+                            <input id="pimary-color-green" name="radio-primary-color" type="radio"
+                                   value="pimary-color-green">
+                            <label for="pimary-color-green"> Green </label>
+                        </div>
+                        <div class="radio mb-5">
+                            <input id="pimary-color-yellow" name="radio-primary-color" type="radio"
+                                   value="pimary-color-yellow">
+                            <label for="pimary-color-yellow"> Yellow </label>
+                        </div>
+                        <div class="radio mb-5">
+                            <input id="pimary-color-pink" name="radio-primary-color" type="radio"
+                                   value="pimary-color-pink">
+                            <label for="pimary-color-pink"> Pink </label>
+                        </div>
+                        <div class="radio mb-5">
+                            <input id="pimary-color-orange" name="radio-primary-color" type="radio"
+                                   value="pimary-color-orange">
+                            <label for="pimary-color-orange"> Orange </label>
+                        </div>
+                        <div class="radio mb-5">
+                            <input id="pimary-color-gold" name="radio-primary-color" type="radio"
+                                   value="pimary-color-gold">
+                            <label for="pimary-color-gold"> Gold </label>
+                        </div>
+                        <div class="radio mb-35">
+                            <input id="pimary-color-silver" name="radio-primary-color" type="radio"
+                                   value="pimary-color-silver">
+                            <label for="pimary-color-silver"> Silver </label>
+                        </div>
+                        <button class="btn  btn-danger btn-xs btn-outline btn-rounded mb-10" id="reset_setting">reset
+                        </button>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <button class="btn btn-success btn-square setting-panel-btn shadow-2dp" id="setting_panel_btn"><i
+            class="zmdi zmdi-settings"></i></button>
+    <!-- /Right Setting Menu -->
+
+    <!-- Right Sidebar Backdrop -->
+    <div class="right-sidebar-backdrop"></div>
+    <!-- /Right Sidebar Backdrop -->
+
+    <!-- Main Content -->
+    <div class="page-wrapper">
+        <div class="container-fluid">
+
+            <!-- Title -->
+            <div class="row heading-bg">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h5 class="txt-dark">Groups Of Doctors</h5>
+                </div>
+
+                <!-- Breadcrumb -->
+                <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                    <ol class="breadcrumb">
+                        <li><a href="index.html">Dashboard</a></li>
+                        <li><a href="Settings.html"><span>Settings</span></a></li>
+                        <li><a href="settings_doctors.html"><span> Doctors Settings</span></a></li>
+                        <li class="active"><span>Groups Of Doctors</span></li>
+                    </ol>
+                </div>
+                <!-- /Breadcrumb -->
+            </div>
+            <!-- /Title -->
+
+            <!-- Row -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-default card-view">
+                        <div class="panel-heading">
+                            <div class="pull-left mb-3">
+<!--                                <h6 class="panel-title txt-dark">data Table</h6>-->
+                            </div>
+                            <div class="pull-left mt-5">
+                                <a class="btn btn-primary " data-target="#exampleModal"
+                                        data-toggle="modal"
+                                   data-whatever="@mdo" type="button" ><i class="fa fa-plus mr-5"></i><span style="font-style:sans-serif;font-size:13px;font-weight:600;"><b>ADD A GROUP</b></span>
+                                </a>
+
+                            </div>
+
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body">
+                                <div class="table-wrap">
+                                    <div class="table-responsive">
+<!--                                        <table class="table table-hover display  pb-30" id="datable_1">-->
+<!--                                            <thead class="bg-primary">-->
+<!--                                            <tr>-->
+<!--                                                <th style="color:#fff;">S.NO</th>-->
+<!--                                                <th style="color:#fff;">Doctors Degree</th>-->
+<!--                                                <th style="color:#fff;">Short Form</th>-->
+<!--                                                <th style="color:#fff;">Short Description</th>-->
+<!--                                                <th style="color:#fff;">Action</th>-->
+
+<!--                                            </tr>-->
+<!--                                            </thead>-->
+
+<!--                                            <tbody id="doctorTableBody">-->
+
+<!--                                           &lt;!&ndash; Doctor data will be appended here &ndash;&gt;-->
+
+<!--&lt;!&ndash;-->
+<!--                                            <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <td>2</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <td><a data-target="#view" data-toggle="modal" href=""&ndash;&gt;-->
+<!--&lt;!&ndash;                                                       style="color:#337ab7;">Master of Surgery</a></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <td>MS</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <td>MS is one of the predominant medical graduate degrees for becoming a&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    doctor.&ndash;&gt;-->
+<!--&lt;!&ndash;                                                </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    <button class="btn btn-default btn-icon-anim btn-square"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            data-target="#edit" data-toggle="modal"><i&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            class="fa fa-pencil"></i></button>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    <button class="btn btn-danger btn-icon-anim btn-square"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            data-target="#deletemodal"><i class="icon-trash"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    </button>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                                </td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                            </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <td>3</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <td><a data-target="#view" data-toggle="modal" href=""&ndash;&gt;-->
+<!--&lt;!&ndash;                                                       style="color:#337ab7;">Doctor of Medicine</a></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <td>MD</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <td>MD is a postgraduate degree, aspirants after pursuing an MBBS degree&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    can&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    opt for this degree.&ndash;&gt;-->
+<!--&lt;!&ndash;                                                </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    <button class="btn btn-default btn-icon-anim btn-square"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            data-target="#edit" data-toggle="modal"><i&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            class="fa fa-pencil"></i></button>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    <button class="btn btn-danger btn-icon-anim btn-square"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            data-target="#deletemodal"><i class="icon-trash"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    </button>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                                </td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                            </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <td>4</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <td><a data-target="#view" data-toggle="modal" href=""&ndash;&gt;-->
+<!--&lt;!&ndash;                                                       style="color:#337ab7;">Bachelor of Ayurvedic Medicine and&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    Surgery</a></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <td>BAMS</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <td>BAMS is a professional medical course that focuses on the study of&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    Ayurvedic medicine.&ndash;&gt;-->
+<!--&lt;!&ndash;                                                </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    <button class="btn btn-default btn-icon-anim btn-square"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            data-target="#edit" data-toggle="modal"><i&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            class="fa fa-pencil"></i></button>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    <button class="btn btn-danger btn-icon-anim btn-square"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            data-target="#deletemodal"><i class="icon-trash"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    </button>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                                </td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                            </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>5</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td><a data-target="#view" data-toggle="modal" href=""&ndash;&gt;-->
+<!--&lt;!&ndash;                                                   style="color:#337ab7;">Bachelor of Homeopathic, Medicine of&ndash;&gt;-->
+<!--&lt;!&ndash;                                                Surgery</a></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>BHMS</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>BHMS is an undergraduate degree in Homeopathy in India</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <button class="btn btn-default btn-icon-anim btn-square"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                        data-target="#edit" data-toggle="modal"><i&ndash;&gt;-->
+<!--&lt;!&ndash;                                                        class="fa fa-pencil"></i></button>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <button class="btn btn-danger btn-icon-anim btn-square"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                        data-target="#deletemodal"><i class="icon-trash"></i></button>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                            </td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                            </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>6</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td><a data-target="#view" data-toggle="modal" href=""&ndash;&gt;-->
+<!--&lt;!&ndash;                                                   style="color:#337ab7;">Bachelor of Medicine, Bachelor of Surgery</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>MBBS</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>MBBS is one of the predominant medical graduate degrees for becoming a&ndash;&gt;-->
+<!--&lt;!&ndash;                                                doctor.&ndash;&gt;-->
+<!--&lt;!&ndash;                                            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <button class="btn btn-default btn-icon-anim btn-square"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                        data-target="#edit" data-toggle="modal"><i&ndash;&gt;-->
+<!--&lt;!&ndash;                                                        class="fa fa-pencil"></i></button>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <button class="btn btn-danger btn-icon-anim btn-square"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                        data-target="#deletemodal"><i class="icon-trash"></i></button>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                            </td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                            </tr>&ndash;&gt;-->
+
+
+<!--                                            </tbody>-->
+<!--                                        </table>-->
+                                         <table class="table table-bordered" id="datable_1">
+                <thead class="bg-primary">
+    <tr>
+        <th style="color:#fff;">S.NO</th>
+        <th style="color:#fff;">Doctors Degree</th>
+        <th style="color:#fff;">Short Form</th>
+        <th style="color:#fff;">Short Description</th>
+        <th style="color:#fff;">Action</th>
+    </tr>
+</thead>
+
+                <tbody id="doctorTableBody">
+                    <!-- Doctor data will be appended here -->
+                </tbody>
+            </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Row -->
+            <!--Modal for creating doctor group-->
+            <div aria-labelledby="exampleModalLabel1" class="modal fade" id="exampleModal" role="dialog"
+                 style="display: none;"
+                 tabindex="-1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary text-white">
+                            <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
+                                    aria-hidden="true" style="color:#fff;"><b>x</b></span></button>
+                            <h5 class="modal-title" id="exampleModalLabel1" style="color:#fff;">Add a Group of
+                                Doctor</h5>
+                        </div>
+                        <div class="modal-body">
+                            <form id="validationForm">
+                                <div class="form-group">
+                                    <label class="control-label mb-10" for="recipient-name">Doctors Degree<i class="glyphicon glyphicon-asterisk" style="color:red;margin:1px;"></i></label>
+                                    <input class="form-control" id="degree" name="degree" type="text" placeholder="Ex:Master Of Science " style="text-transform:capitalize;">
+                                    <small class="error-message" id="degreeError"></small>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label mb-10" for="recipient-name">Short Form<i class="glyphicon glyphicon-asterisk" style="color:red;margin:1px;"></i></label>
+                                    <input class="form-control" id="shortform" name="shortform" type="text" placeholder="Ex:MS" style="text-transform:uppercase;">
+                                    <small class="error-message" id="shortformError"></small>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label mb-10" for="message-text">Short Description<i class="glyphicon glyphicon-asterisk" style="color:red;margin:1px;"></i></label>
+                                    <textarea class="form-control" id="discription" name="discription" placeholder="Ex:MBBS is one of the predominant medical graduate degrees for becoming a doctor. "></textarea>
+                                    <small class="error-message" id="discriptionError"></small>
+
+
+                                </div>
+
+                        <div class="modal-footer">
+                            <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                            <button class="btn btn-primary" type="submit">Save</button>
+                            <button onclick="fetchMessage()"></button>
+
+                            <p id="message"></p>
+                        </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Modal for view-->
+            <div aria-labelledby="exampleModalLabel1" class="modal fade" id="view" role="dialog" style="display: none;"
+                 tabindex="-1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary">
+                            <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
+                                    aria-hidden="true">×</span></button>
+                            <h5 class="modal-title" id="exampleModalLabel1" style="color:#fff;">View Doctors Group</h5>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label class="control-label mb-10" for="recipient-name">Doctors Degree:</label>
+                                    <input class="form-control" disabled id="recipient-name1"
+                                           type="text" value="Bachelor of Medicine, Bachelor of Surgery">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label mb-10" for="recipient-name">Short Form:</label>
+                                    <input class="form-control" disabled id="recipient-name1" type="text" value="MBBS">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label mb-10" for="message-text">Short Description:</label>
+                                    <input class="form-control" disabled id="recipient-name1"
+                                           type="textarea"
+                                           value="MBBS is one of the predominant medical graduate degrees for becoming a doctor.">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                            <button class="btn btn-primary" type="button">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Modal for edit-->
+            <div aria-labelledby="exampleModalLabel1" class="modal fade" id="edit" role="dialog" style="display: none;"
+                 tabindex="-1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary">
+                            <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
+                                    aria-hidden="true" style="color:#fff;">x</span></button>
+                            <h5 class="modal-title" id="exampleModalLabel1" style="color:#fff;">Edit the Doctors Group</h5>
+                        </div>
+                        <div class="modal-body">
+                            <form id="validationFormedit">
+                                 <input type="hidden" id="editDoctorId" name="id">
+                                <div class="form-group">
+                                    <label class="control-label mb-10" for="recipient-name">Doctors Degree<i class="glyphicon glyphicon-asterisk" style="color:red;margin:1px;"></i></label>
+                                    <input class="form-control" id="edegree" name="edegree"
+                                           type="text" value="">
+                                     <small class="error-message" id="edegreeError"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label mb-10" for="recipient-name">Short Form<i class="glyphicon glyphicon-asterisk" style="color:red;margin:1px;"></i></label>
+                                    <input class="form-control" id="eshortform" name="eshortform" type="text" value="">
+                                     <small class="error-message" id="eshortformError"></small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label mb-10" for="message-text">Short Description<i class="glyphicon glyphicon-asterisk" style="color:red;margin:1px;"></i></label>
+                                    <input class="form-control" id="ediscription" type="text" name="ediscription"
+                                           value="" >
+                                     <small class="error-message" id="ediscriptionError"></small>
+                                </div>
+
+
+                        <div class="modal-footer">
+                            <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                            <button class="btn btn-primary" type="submit">Save</button>
+                        </div>
+
+                        </form>
+                             </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Modal for deleting row-->
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer container-fluid pl-30 pr-30">
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>2017 &copy; Doodle. Pampered by Hencework</p>
+                </div>
+            </div>
+        </footer>
+        <!-- /Footer -->
+
+    </div>
+    <!-- /Main Content -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- JavaScript -->
+<!-- jQuery -->
+<script src="../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!--&lt;!&ndash; Data table JavaScript &ndash;&gt;-->
+<!--<script src="../../vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>-->
+<!--<script src="dist/js/dataTables-data.js"></script>-->
+
+ <!-- Bootstrap JS and dependencies -->
+<!--    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>-->
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+
+
+<!-- Slimscroll JavaScript -->
+<script src="dist/js/jquery.slimscroll.js"></script>
+
+<!-- Owl JavaScript -->
+<script src="../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+
+<!-- Switchery JavaScript -->
+<script src="../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
+
+<!-- Fancy Dropdown JS -->
+<script src="dist/js/dropdown-bootstrap-extended.js"></script>
+
+<!-- Init JavaScript -->
+<script src="dist/js/init.js"></script>
+<!--script for validation-->
+<!--<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>-->
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<!-- Bootstrap JS and dependencies -->
+<!--    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>-->
+<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">-->
+<!--<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>-->
+<!--<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>-->
+
+    <script>
+<!--        document.getElementById('validationForm').addEventListener('submit', function(event) {-->
+<!--            event.preventDefault();-->
+
+<!--            const formData = new FormData(event.target);-->
+<!--            const doctorId = formData.get('id'); // Get the doctor ID from the form data-->
+
+<!--            const editedDoctorData = {-->
+<!--                degree: formData.get('degree'),-->
+<!--                shortform: formData.get('shortform'),-->
+<!--                discription: formData.get('discription')-->
+<!--            };-->
+
+<!--            console.log('Form Data:', editedDoctorData); // Log the form data to the console-->
+
+<!--            // Send the edited data to your backend API using fetch-->
+<!--            fetch(`http://192.168.0.114:9191/api/propertyinsurance/demo/post`, {-->
+<!--                method: 'POST',-->
+<!--                body: JSON.stringify(editedDoctorData),-->
+<!--                headers: {-->
+<!--                    'Content-Type': 'application/json'-->
+<!--                }-->
+<!--            })-->
+<!--            .then(response => {-->
+<!--                if (response.ok) {-->
+<!--                    alert('INSERTED successfully');-->
+<!--                    location.reload(); // Reload the page or update the table-->
+<!--                } else {-->
+<!--                    alert('Error updating doctor details');-->
+<!--                }-->
+<!--            })-->
+<!--            .catch(error => console.error('Error:', error));-->
+<!--        });-->
+
+<!--        function fetchMessage() {-->
+<!--            console.log('Button clicked!'); // Add any other actions you want to perform here-->
+<!--        }-->
+    </script>
+<script>
+    $(document).ready(function() {
+     $('#validationForm').validate({
+       rules: {
+          degree:{
+               required:true,
+               minlength:2,
+               maxlength:50,
+               pattern:/^[a-zA-Z\s,'-]+$/
+          },
+          shortform:{
+                required:true,
+                pattern:/^[a-zA-Z\s]*$/,
+                minlength:2,
+                maxlength:10
+           },
+         discription:{
+                required:true,
+                pattern:/^[a-zA-Z\s,'-.]+$/,
+                minlength:2,
+                maxlength:50
+          }
+
+   },
+   messages: {
+            degree:{
+                required:"Please enter Doctor's Degree",
+                minlength:"Degree must be at least 2 Characters",
+                maxlength:"Degree must be at most 50 characters long",
+                pattern:"Please enter valid Degree,must be alphabets only "
+            },
+            shortform:{
+                required:"Please enter Short Form ",
+                minlength:"ShortForm must be at least 2 Characters",
+                maxlength:"SHortForm must be at most 50 characters long",
+                pattern:"Please enter valid shortform,must be Uppercase letters only"
+
+            },
+            discription:{
+                required: "Please enter a description.",
+                pattern: "Description contains invalid characters.",
+                minlength: "Description must be at least 2 characters long.",
+                maxlength: "Description cannot exceed 50 characters."
+
+
+            }
+
+           },
+
+
+       errorElement: 'small',
+       errorPlacement: function(error, element) {
+         error.addClass('error-message');
+         error.appendTo($('#' + element.attr('id') + 'Error'));
+       },
+     });
+     $('#validationFormedit').validate({
+       rules: {
+          edegree:{
+               required:true,
+               minlength:2,
+               maxlength:50,
+               pattern:/^[a-zA-Z\s,'-]+$/
+          },
+          eshortform:{
+                required:true,
+                pattern:/^[A-Z\s]*$/,
+                minlength:2,
+                maxlength:10
+           },
+         ediscription:{
+                required:true,
+                pattern:/^[a-zA-Z\s,'-.]+$/,
+                minlength:2,
+                maxlength:50
+          }
+
+
+
+
+   },
+   messages: {
+            edegree:{
+                required:"Please enter Doctor's Degree",
+                minlength:"Degree must be at least 2 Characters",
+                maxlength:"Degree must be at most 50 characters long",
+                pattern:"Please enter valid Degree,must be alphabets only "
+            },
+            eshortform:{
+                required:"Please enter Short Form ",
+                minlength:"ShortForm must be at least 2 Characters",
+                maxlength:"ShortForm must be at most 50 characters long",
+                pattern:"Please enter valid shortform,must be Uppercase letters only"
+
+            },
+            ediscription:{
+                required: "Please enter a description.",
+                pattern: "Description contains invalid characters.",
+                minlength: "Description must be at least 2 characters long.",
+                maxlength: "Description cannot exceed 50 characters."
+
+
+            }
+
+           },
+
+
+       errorElement: 'small',
+       errorPlacement: function(error, element) {
+         error.addClass('error-message');
+         error.appendTo($('#' + element.attr('id') + 'Error'));
+       },
+     });
+    })
+    function fetchMessage() {
+            fetch('http://192.168.0.118:9191/api/propertyinsurance/demo')
+
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    console.log(data);
+                    const messageElement = document.getElementById('message');
+                    messageElement.textContent = data;
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+    });
+
+    console.log("hii");
+
+
+    }
+
+
+
+</script>
+
+
+<script>
+     document.getElementById('validationForm').addEventListener('submit', function(event)
+    {
+            event.preventDefault();
+        if (`$(this).valid()`) {
+            const formData = new FormData(event.target);
+            const doctorId = formData.get('id'); // Get the doctor ID from the form data
+
+            const editedDoctorData =
+            {
+                degree: formData.get('degree'),
+                shortform: formData.get('shortform'),
+                discription: formData.get('discription')
+            };
+
+            console.log('Form Data:', editedDoctorData); // Log the form data to the console
+
+                check(editedDoctorData);
+<!--                insert(editedDoctorData);-->
+
+            }else {
+                console.log('Validation failed. API call not made.');
+            }
+
+
+        // FIRST CHECK DEGREE EXIST OR NOT...
+
+            function check (editedDoctorData)
+            {
+            const degreeName = editedDoctorData.degree;
+            console.log(degreeName);
+              fetch("http://localhost:9090/api/GroupofDoctors/degrees/"+degreeName)
+
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    console.log(data,editedDoctorData.degree);
+                    if(data === "Degree name not found: ")
+                    {
+                     insert(editedDoctorData);
+                    }
+                    else
+                    {
+                     alert('Degree name already exists. Please choose a different name.');
+                    }
+
+
+<!--                    if(data == "Degree name not found:"){-->
+<!--                     insert(editedDoctorData);-->
+<!--                    }-->
+<!--                    else-->
+<!--                    {-->
+<!--                    alert('Degree name already exists. Please choose a different name.');-->
+<!--                    }-->
+
+
+
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                    });
+            }
+
+            // calling insert function ...
+            function insert(editedDoctorData)
+            {
+
+            // Send the edited data to your backend API using fetch
+            fetch(`http://localhost:9090/api/GroupofDoctors`, {
+                method: 'POST',
+                body: JSON.stringify(editedDoctorData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Doctor details inserted successfully');
+                    location.reload(); // Reload the page or update the table
+                } else {
+                    alert('Error updating doctor details');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+            }
+        });
+
+</script>
+
+<!-- <script>-->
+<!--        "use strict";-->
+
+<!--        let dataTable; // Declare a variable to hold the DataTable instance-->
+
+<!--        document.addEventListener('DOMContentLoaded', function() {-->
+<!--            fetch("http://localhost:9090/api/GroupofDoctors")-->
+<!--                .then(response => response.json())-->
+<!--                .then(data => {-->
+<!--                    const tableBody = document.getElementById('doctorTableBody');-->
+<!--                    tableBody.innerHTML = ''; // Clear existing table body content-->
+
+<!--                    data.forEach((doctor, index) => {-->
+<!--                        const row = document.createElement('tr');-->
+
+<!--                        row.innerHTML = `-->
+<!--                            <td>${index + 1}</td>-->
+<!--                            <td>${doctor.degree}</td>-->
+<!--                            <td>${doctor.shortform}</td>-->
+<!--                            <td>${doctor.discription}</td>-->
+<!--                            <td class="action-buttons">-->
+<!--                                <button class="btn btn-default btn-icon-anim btn-square" data-target="#editDoctorModal" data-toggle="modal" onClick="handleEdit(${doctor.id})">-->
+<!--                                    <i class="fa fa-pencil"></i> Edit-->
+<!--                                </button>-->
+<!--                                <button class="btn btn-danger btn-icon-anim btn-square" onClick="handleDelete(${doctor.id})">-->
+<!--                                    <i class="icon-trash"></i> Delete-->
+<!--                                </button>-->
+<!--                            </td>-->
+<!--                        `;-->
+<!--                        tableBody.appendChild(row);-->
+<!--                    });-->
+
+<!--                    // Destroy existing DataTable instance if it exists-->
+<!--                    if ($.fn.DataTable.isDataTable('#datable_1')) {-->
+<!--                        dataTable.destroy();-->
+<!--                    }-->
+
+<!--                    // Initialize DataTables after data is loaded-->
+<!--                    dataTable = $('#datable_1').DataTable({-->
+<!--                        "paging": true, // Enable pagination-->
+<!--                        "searching": true, // Enable search-->
+<!--                        "ordering": true, // Enable sorting-->
+<!--                        "order": [[0, 'asc']], // Initial sorting by the first column ascending-->
+<!--                        "autoWidth": false, // Disable auto width calculation-->
+<!--                        "responsive": true // Enable responsiveness-->
+<!--                    });-->
+<!--                })-->
+<!--                .catch(error => console.error('Error:', error));-->
+<!--        });-->
+
+<!--        function handleEdit(id) {-->
+<!--            fetch(`http://localhost:9090/api/GroupofDoctors/${id}`)-->
+
+<!--                .then(response => response.json())-->
+<!--                .then(doctor => {-->
+<!--                 console.log(id,doctor);-->
+<!--                    document.getElementById('editDoctorId').value = doctor.id;-->
+<!--                    document.getElementById('edegree').value = doctor.degree;-->
+<!--                    document.getElementById('eshortform').value = doctor.shortform;-->
+<!--                    document.getElementById('ediscription').value = doctor.discription;-->
+<!--                    $('#editDoctorModal').modal('show');-->
+<!--                })-->
+<!--                .catch(error => console.error('Error:', error));-->
+<!--        }-->
+
+<!--        document.getElementById('validationFormedit').addEventListener('submit', function(event) {-->
+<!--            event.preventDefault();-->
+<!--            const formData = new FormData(event.target);-->
+<!--            const doctorId = formData.get('id');-->
+
+<!--            const editedDoctorData = {-->
+<!--                degree: formData.get('edegree'),-->
+<!--                shortform: formData.get('eshortform'),-->
+<!--                discription: formData.get('ediscription')-->
+<!--            };-->
+
+<!--            fetch(`http://localhost:9090/api/GroupofDoctors/${doctorId}`, {-->
+<!--                method: 'PUT',-->
+<!--                body: JSON.stringify(editedDoctorData),-->
+<!--                headers: {-->
+<!--                    'Content-Type': 'application/json'-->
+<!--                }-->
+<!--            })-->
+<!--            .then(response => {-->
+<!--                if (response.ok) {-->
+<!--                    alert('Doctor details updated successfully');-->
+<!--                    location.reload();-->
+<!--                } else {-->
+<!--                    alert('Error updating doctor details');-->
+<!--                }-->
+<!--            })-->
+<!--            .catch(error => console.error('Error:', error));-->
+<!--        });-->
+
+<!--        function handleDelete(id) {-->
+<!--            if (confirm('Are you sure you want to delete this doctor?')) {-->
+<!--                fetch(`http://localhost:9090/api/GroupofDoctors/${id}`, {-->
+<!--                    method: 'DELETE'-->
+<!--                })-->
+<!--                .then(response => {-->
+<!--                    if (response.ok) {-->
+<!--                        alert('Doctor deleted successfully');-->
+<!--                        location.reload();-->
+<!--                    } else {-->
+<!--                        alert('Error deleting doctor');-->
+<!--                    }-->
+<!--                })-->
+<!--                .catch(error => console.error('Error:', error));-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
+
+<script>
+   "use strict";
+
+let dataTable; // Declare a variable to hold the DataTable instance
+
+document.addEventListener('DOMContentLoaded', function() {
+    fetch("http://localhost:9090/api/GroupofDoctors")
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.getElementById('doctorTableBody');
+            tableBody.innerHTML = ''; // Clear existing table body content
+
+            data.forEach((doctor, index) => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${doctor.degree}</td>
+                    <td>${doctor.shortform}</td>
+                    <td>${doctor.discription}</td>
+                    <td>
+                        <button class="btn btn-default btn-icon-anim btn-square" data-target="#edit" data-toggle="modal" onClick="handleEdit(${doctor.id})">
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                        <button class="btn btn-danger btn-icon-anim btn-square" data-target="#deletemodal" onClick="handleDelete(${doctor.id})">
+                            <i class="icon-trash"></i>
+                        </button>
+                    </td>
+                `;
+                 tableBody.appendChild(row);
+                    });
+
+                    // Destroy existing DataTable instance if it exists
+                    if ($.fn.DataTable.isDataTable('#datable_1')) {
+                        dataTable.destroy();
+                    }
+
+                    // Initialize DataTables after data is loaded
+                    dataTable = $('#datable_1').DataTable({
+                        "paging": true, // Enable pagination
+                        "searching": true, // Enable search
+                        "ordering": true, // Enable sorting
+                        "order": [[0, 'asc']], // Initial sorting by the first column ascending
+                        "autoWidth": false, // Disable auto width calculation
+                        "responsive": true // Enable responsiveness
+                    });
+                })
+        .catch(error => console.error('Error:', error));
+});
+
+function handleEdit(id) {
+    fetch(`http://localhost:9090/api/GroupofDoctors/${id}`)
+        .then(response => response.json())
+        .then(doctor => {
+            // Populate the modal with the doctor's data
+            document.getElementById('editDoctorId').value = doctor.id;
+            document.getElementById('edegree').value = doctor.degree;
+            document.getElementById('eshortform').value = doctor.shortform;
+            document.getElementById('ediscription').value = doctor.discription;
+            // Show the modal
+            $('#editDoctorModal').modal('show');
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+// Handle form submission for editing
+document.getElementById('validationFormedit').addEventListener('submit', function(event) {
+    event.preventDefault();
+    if ($(this).valid()) {
+        const formData = new FormData(event.target);
+        const doctorId = formData.get('id');
+
+        const editedDoctorData = {
+            degree: formData.get('edegree'),
+            shortform: formData.get('eshortform'),
+            discription: formData.get('ediscription')
+        };
+
+        console.log(doctorId, editedDoctorData);
+
+        fetch(`http://localhost:9090/api/GroupofDoctors/${doctorId}`, {
+            method: 'PUT',
+            body: JSON.stringify(editedDoctorData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Doctor details updated successfully');
+                location.reload();
+            } else {
+                alert('Error updating doctor details');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+});
+
+// Handle delete logic
+function handleDelete(id) {
+    if (confirm('Are you sure you want to delete this doctor?')) {
+        fetch(`http://localhost:9090/api/GroupofDoctors/${id}`, {
+            method: 'DELETE'
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Doctor deleted successfully');
+                // Reload the page or remove the row from the table
+                location.reload();
+            } else {
+                alert('Error deleting doctor');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+}
+
+
+</script>
+
+<!--<script>-->
+<!--    document.addEventListener('DOMContentLoaded', function() {-->
+<!--        fetch("http://localhost:9090/api/GroupofDoctors")-->
+<!--            .then(response => response.json())-->
+<!--            .then(data => {-->
+<!--                const tableBody = document.getElementById('doctorTableBody');-->
+<!--                data.forEach(doctor => {-->
+<!--                    const row = document.createElement('tr');-->
+
+<!--                    row.innerHTML = `-->
+<!--                        <td>${doctor.id}</td>-->
+<!--                        <td>${doctor.degree}</td>-->
+<!--                        <td>${doctor.shortform}</td>-->
+<!--                        <td>${doctor.discription}</td>-->
+<!--                        <td>-->
+<!--                            <button class="btn btn-default btn-icon-anim btn-square" data-target="#edit" data-toggle="modal" onClick="handleEdit(${doctor.id})">-->
+<!--                                <i class="fa fa-pencil"></i>-->
+<!--                            </button>-->
+<!--                            <button class="btn btn-danger btn-icon-anim btn-square" data-target="#deletemodal" onClick="handleDelete(${doctor.id})">-->
+<!--                                <i class="icon-trash"></i>-->
+<!--                            </button>-->
+<!--                        </td>-->
+<!--                    `;-->
+<!--                    tableBody.appendChild(row);-->
+<!--                });-->
+<!--            // Initialize DataTables after data is loaded-->
+<!--            $('#datable_1').DataTable();-->
+<!--            })-->
+<!--            .catch(error => console.error('Error:', error));-->
+<!--    });-->
+
+
+<!--    function handleEdit(id) {-->
+<!--        fetch(`http://localhost:9090/api/GroupofDoctors/${id}`)-->
+<!--            .then(response => response.json())-->
+<!--            .then(doctor => {-->
+<!--                // Populate the modal with the doctor's data-->
+<!--                document.getElementById('editDoctorId').value = doctor.id;-->
+<!--                document.getElementById('edegree').value = doctor.degree;-->
+<!--                document.getElementById('eshortform').value = doctor.shortform;-->
+<!--                document.getElementById('ediscription').value = doctor.discription;-->
+<!--                // Show the modal-->
+<!--                $('#editDoctorModal').modal('show');-->
+<!--            })-->
+<!--            .catch(error => console.error('Error:', error));-->
+<!--    }-->
+
+<!--    // Handle form submission for editing-->
+<!--    document.getElementById('validationFormedit').addEventListener('submit', function(event) {-->
+<!--        event.preventDefault();-->
+<!--        if (`$(this).valid()`) {-->
+<!--            const formData = new FormData(event.target);-->
+<!--            const doctorId = formData.get('id');-->
+
+<!--            const editedDoctorData = {-->
+<!--                degree: formData.get('edegree'),-->
+<!--                shortform: formData.get('eshortform'),-->
+<!--                discription: formData.get('ediscription')-->
+<!--            };-->
+
+<!--            console.log(doctorId, editedDoctorData);-->
+
+<!--            fetch(`http://localhost:9090/api/GroupofDoctors/${doctorId}`, {-->
+<!--                method: 'PUT',-->
+<!--                body: JSON.stringify(editedDoctorData),-->
+<!--                headers: {-->
+<!--                    'Content-Type': 'application/json'-->
+<!--                }-->
+<!--            })-->
+<!--            .then(response => {-->
+<!--                if (response.ok) {-->
+<!--                    alert('Doctor details updated successfully');-->
+<!--                    location.reload();-->
+<!--                } else {-->
+<!--                    alert('Error updating doctor details');-->
+<!--                }-->
+<!--            })-->
+<!--            .catch(error => console.error('Error:', error));-->
+<!--        }-->
+<!--    });-->
+
+<!--    // Handle delete logic-->
+<!--    function handleDelete(id) {-->
+<!--        if (confirm('Are you sure you want to delete this doctor?')) {-->
+<!--            fetch(`http://localhost:9090/api/GroupofDoctors/${id}`, {-->
+<!--                method: 'DELETE'-->
+<!--            })-->
+<!--            .then(response => {-->
+<!--                if (response.ok) {-->
+<!--                    alert('Doctor deleted successfully');-->
+<!--                    // Reload the page or remove the row from the table-->
+<!--                    location.reload();-->
+<!--                } else {-->
+<!--                    alert('Error deleting doctor');-->
+<!--                }-->
+<!--            })-->
+<!--            .catch(error => console.error('Error:', error));-->
+<!--        }-->
+<!--    }-->
+
+<!--    // Additional DataTables initialization-->
+<!--$(document).ready(function() {-->
+<!--    $('#datable_1').DataTable();-->
+<!--    $('#datable_2').DataTable({ "lengthChange": false });-->
+<!--});-->
+<!--</script>-->
+
+
+</body>
+
+
+<!-- Mirrored from hencework.com/theme/doodle-demo/full-width-light/data-table.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Sep 2020 08:45:28 GMT -->
+</html>

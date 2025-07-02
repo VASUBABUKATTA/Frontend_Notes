@@ -1,0 +1,343 @@
+<script>
+        // Function to fetch degrees from API and populate dropdown
+        function fetchAndPopulateDegrees() {
+            fetch("http://localhost:9090/api/GroupofDoctors/getAllDegrees")
+                .then(response => response.json())
+                .then(data => {
+                    const degreeDropdown = document.getElementById('degreedropdown');
+                    degreeDropdown.innerHTML = '<option value="">Select an Option</option>';
+                    data.forEach(degree => {
+                        const option = document.createElement('option');
+                        option.value = degree.degreeName;
+                        option.text = degree.degreeName;
+                        degreeDropdown.appendChild(option);
+                    });
+                    // Refresh Bootstrap Select Picker after updating options
+                    $('#degreedropdown').selectpicker('refresh');
+                })
+                .catch(error => console.error('Error fetching degrees:', error));
+        }
+
+        // Call fetchAndPopulateDegrees() when the page is loaded
+        document.addEventListener('DOMContentLoaded', fetchAndPopulateDegrees);
+
+        // Event listener to fetch degrees when the select dropdown is shown
+        $('#degreedropdown').on('show.bs.select', function () {
+            fetchAndPopulateDegrees();
+        });
+    </script>
+
+<script>
+
+    document.getElementById('validationForm').addEventListener('submit', function(event)
+    {
+    event.preventDefault();
+            if ($(this).valid()) {
+                const formData = new FormData(event.target);
+
+                const editedDoctorData =
+                {
+                    doctorsDegree: formData.get('degreedropdown'),
+                    specialization: formData.get('specialization'),
+                    description: formData.get('description'),
+                    file: formData.get('image')
+                };
+
+                 console.log('Form Data:', editedDoctorData); // Log the form data to the console
+
+                // check details are existed or not..
+                checkDetails(editedDoctorData);
+
+
+            }else {
+                console.log('Validation failed. API call not made.');
+            }
+
+         function checkDetails(editedDoctorData) {
+    var specialization = editedDoctorData.specialization;
+    console.log(specialization);
+    fetch("http://localhost:9090/api/specialization/degrees/" + editedDoctorData.specialization)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.text();
+        })
+        .then(data => {
+            console.log(data, editedDoctorData.degree);
+            if (data === "Specialization not found") {
+                console.log(data, editedDoctorData.degree);
+                insertDetails(editedDoctorData);
+            } else {
+                alert('Specialization already exists. Please choose a different name.');
+            }
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+}
+
+
+            // insertDetails function ...
+            function insertDetails(editedDoctorData)
+            {
+
+            const url = new URL('http://localhost:9090/api/specialization');
+            url.searchParams.append('doctorsDegree', editedDoctorData.doctorsDegree);
+            url.searchParams.append('specialization', editedDoctorData.specialization);
+            url.searchParams.append('description', editedDoctorData.description);
+
+            const formDataToSend = new FormData();
+           formDataToSend.append('file', editedDoctorData.file);
+            formDataToSend.append('doctorsDegree', editedDoctorData.doctorsDegree);
+            formDataToSend.append('specialization', editedDoctorData.specialization);
+            formDataToSend.append('description', editedDoctorData.description);
+
+                fetch(url, {
+                  method: 'POST',
+                 body: formDataToSend
+                    })
+                     .then(response => {
+                if (response.ok) {
+                    alert('Specialization details inserted successfully');
+                     $('#exampleModal').modal('hide');  // Close the modal
+                document.getElementById('validationForm').reset();
+                $('#datable_1').DataTable().ajax.reload();  // Reload DataTable data
+                } else {
+                    alert('Error updating doctor details');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+            }
+
+        });
+
+
+</script>
+
+
+
+<script>
+$(document).ready(function() {
+    $('#datable_1').DataTable({
+        "ajax": {
+            "url": "http://localhost:9090/api/specialization",
+            "type": "GET",
+            "dataSrc": "" // Data is returned as an array of objects
+        },
+        "columns": [
+            { "data": null }, // Index column
+            { "data": "doctorsDegree" },
+            {
+                "data": "id",
+                "render": function(data) {
+                    if (data) {
+                        return `<div class="d-flex align-items-center">
+                                    <img class="img-circle" height="70" src="http://localhost:9090/api/specialization/image/${data}" width="70">
+                                    <span class="ml-2"></span>
+                                </div>`;
+                    } else {
+                        return `<div class="d-flex align-items-center">
+                                    <img class="img-circle" height="70" src="img/default-placeholder.png" width="70">
+                                    <span class="ml-2"></span>
+                                </div>`;
+                    }
+                }
+            },
+            { "data": "specialization" },
+            { "data": "description" },
+            {
+                "data": "id",
+                "render": function(data) {
+                    return `
+                        <button class="btn btn-default btn-icon-anim btn-square" data-toggle="modal" onClick="handleEdit(${data})">
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                        <button class="btn btn-danger btn-icon-anim btn-square" data-toggle="modal" onClick="handleDelete(${data})">
+                            <i class="icon-trash"></i>
+                        </button>`;
+
+                }
+            }
+        ],
+        "columnDefs": [
+            {
+                "targets": 0, // Index column
+                "orderable": true,
+                "searchable": true,
+                "render": function(data, type, full, meta) {
+                    return meta.row + 1;
+                }
+            }
+        ],
+        "paging": true,
+        "searching": true,
+        "ordering": true,
+        "responsive": true
+    });
+});
+
+
+function handleEdit(id) {
+
+    fetch(`http://192.168.0.112:9090/api/specialization/${id}`)
+        .then(response => response.json())
+        .then(doctor => {
+            console.log(doctor);
+            document.getElementById('editDoctorId').value = doctor.id;
+            document.getElementById('especialization').value = doctor.specialization;
+            document.getElementById('edescription').value = doctor.description;
+            fetchAndPopulateDegrees(doctor.doctorsDegree);
+
+
+
+
+
+            $('#editDoctorModal').modal('show');
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
+
+
+
+
+// Function to fetch degrees from API and populate the select box
+function fetchAndPopulateDegrees(selectedDegree) {
+    fetch("http://localhost:9090/api/GroupofDoctors/getAllDegrees")
+        .then(response => response.json())
+        .then(data => {
+            const degreeDropdown = document.getElementById('edegreedropdown');
+            degreeDropdown.innerHTML = ''; // Clear existing options
+
+            // Create an option for the currently assigned degree first
+            if (selectedDegree) {
+                const selectedOption = document.createElement('option');
+                selectedOption.value = selectedDegree;
+                selectedOption.textContent = selectedDegree;
+                selectedOption.selected = true;
+                degreeDropdown.appendChild(selectedOption);
+            }
+
+            // Populate other options from API response
+            data.forEach(degree => {
+                if (degree.degreeName !== selectedDegree) {
+                    const option = document.createElement('option');
+                    option.value = degree.degreeName;
+                    option.textContent = degree.degreeName;
+                    degreeDropdown.appendChild(option);
+                }
+            });
+
+            // Refresh Bootstrap Select Picker after updating options
+            $('#edegreedropdown').selectpicker('refresh');
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
+ //   checkDetails function.....
+            function checkDetails(editedDoctorData,doctorId)
+            {
+                    const specialization = editedDoctorData.specialization;
+              fetch("http://localhost:9090/api/specialization/degrees/"+specialization)
+
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    console.log(data,editedDoctorData.degree);
+                    if(data === "Specialization not found: ")
+                    {
+                     console.log(data,editedDoctorData.degree);
+                     insertDetails(editedDoctorData,doctorId);
+                    }
+                    else
+                    {
+                     alert('specialization  already exists. Please choose a different name.');
+                    }
+
+
+<!--                    if(data == "Degree name not found:"){-->
+<!--                     insert(editedDoctorData);-->
+<!--                    }-->
+<!--                    else-->
+<!--                    {-->
+<!--                    alert('Degree name already exists. Please choose a different name.');-->
+<!--                    }-->
+
+
+
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                    });
+            }
+
+
+            function insertDetails(editedDoctorData,doctorId)
+            {
+
+            fetch(`http://localhost:9090/api/specialization/${doctorId}`, {
+            method: 'PUT',
+            body: JSON.stringify(editedDoctorData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Doctor details updated successfully');
+                 $('#edit').modal('hide');  // Close the modal
+                document.getElementById('validationFormedit').reset();
+                $('#datable_1').DataTable().ajax.reload();  // Reload DataTable data
+            } else {
+                alert('Error updating doctor details');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+
+            }
+
+document.getElementById('validationFormedit').addEventListener('submit', function(event) {
+    event.preventDefault();
+    if ($(this).valid()) {
+        const formData = new FormData(event.target);
+        const doctorId = formData.get('id');
+        const editedDoctorData = {
+            doctorsDegree: formData.get('edegreedropdown'),
+            specialization: formData.get('especialization'),
+            description: formData.get('edescription'),
+            file:formData.get('eimage')
+        };
+
+        // check details are existed or not..
+                checkDetails(editedDoctorData,doctorId);
+
+
+    } else {
+        console.log('Validation failed. API call not made.');
+    }
+});
+
+function handleDelete(id) {
+    if (confirm('Are you sure you want to delete this doctor?')) {
+        fetch(`http://localhost:9090/api/specialization/${id}`, {
+            method: 'DELETE'
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Doctor deleted successfully');
+                $('#datable_1').DataTable().ajax.reload();  // Reload DataTable data
+            } else {
+                alert('Error deleting doctor');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+}
+</script>

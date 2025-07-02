@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HospitalManagement</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS for additional styling -->
+    <style>
+        .custom-border {
+            margin: 2px;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        .side-nav {
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            
+            <div class="col-3 side-nav">
+                <button class="btn btn-link d-block mb-2 custom-border" onclick="showContent('Hostel Profile Info')">Hostel Profile Info</button>
+                <button class="btn btn-link d-block mb-2 custom-border" onclick="showContent('Edit Hostel Profile')">Edit Hostel Profile</button>
+                <button class="btn btn-link d-block mb-2 custom-border" onclick="showContent('Room Management')">Room Management</button>
+                <button class="btn btn-link d-block mb-2 custom-border" onclick="showContent('New Hostler')">New Hostler</button>
+                <button class="btn btn-link d-block mb-2 custom-border" onclick="showContent('Update & Delete Hostler')">Update & Delete Hostler</button>
+                <button class="btn btn-link d-block mb-2 custom-border" onclick="showContent('Hosteler Fee')">Hosteler Fee</button>
+                <button class="btn btn-link d-block mb-2 custom-border" onclick="showContent('List of Hostlers Living')">List of Hostlers Living</button>
+                <button class="btn btn-link d-block mb-2 custom-border" onclick="showContent('Hostelers Left')">Hostelers Left</button>
+                <button class="btn btn-link d-block mb-2 custom-border" onclick="showContent('New Staff')">New Staff</button>
+                <button class="btn btn-link d-block mb-2 custom-border" onclick="showContent('Update & Delete Staff')">Update & Delete Staff</button>
+                <button class="btn btn-link d-block mb-2 custom-border" onclick="showContent('Staff Payment')">Staff Payment</button>
+                <button class="btn btn-link d-block mb-2 custom-border" onclick="showContent('List of Staff')">List of Staff</button>
+                <button class="btn btn-link d-block mb-2 custom-border" onclick="showContent('Left Staff')">Left Staff</button>
+            </div>
+            <div class="col-9">
+                <div id="content" class="p-3">Please select an option from the side menu.</div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Custom JS to handle content display -->
+    <script>
+        function showContent(content) {
+            document.getElementById('content').innerHTML = content;
+        }
+    </script>
+</body>
+</html>

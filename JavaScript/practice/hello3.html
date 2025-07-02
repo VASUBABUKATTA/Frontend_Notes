@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Specialization Management</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Bootstrap Select CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0/css/bootstrap-select.min.css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Add Doctor Specialization Modal -->
+        <div class="modal fade" id="addDoctorModal" tabindex="-1" role="dialog" aria-labelledby="addDoctorModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addDoctorModalLabel">Add Doctor Specialization</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                         <form id="validationForm">
+                                <div class="form-group">
+                                    <label class="control-label mb-10">Doctors Degree</label>
+                                    <br>
+<!--                                    <select class="selectpicker form-control"-->
+<!--                                            data-style="form-control btn-default btn-outline" id="doctorsDegree"-->
+<!--                                            name="doctorsDegree">-->
+<!--                                        <option value="">Select an Option</option>-->
+<!--                                        <option value="MBBS">MBBS</option>-->
+<!--                                        <option value="MS">MS</option>-->
+<!--                                        <option value="MD">MD</option>-->
+<!--                                    </select>-->
+                                      <select class="selectpicker form-control"
+                                            data-style="form-control btn-default btn-outline" id="doctorsDegree"
+                                            name="doctorsDegree">
+                                        <option value="">Select an Option</option>
+                                    </select>
+                                    <small class="error-message" id="doctorsDegreeError"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label mb-10">Specialization:</label>
+                                    <br>
+<!--                                    <select class="selectpicker form-control"-->
+<!--                                            data-style="form-control btn-default btn-outline" id="specialization"-->
+<!--                                            name="specialization">-->
+<!--                                        <option value="">Select an Option</option>-->
+<!--                                        <option value="Cardiology">Cardiology</option>-->
+<!--                                        <option value="Pediatrician">Pediatrician</option>-->
+<!--                                        <option value="Orthopadic">Orthopadic</option>-->
+<!--                                    </select>-->
+                                        <select class="selectpicker form-control"
+                                                      data-style="form-control btn-default btn-outline"
+                                                                      id="specialization"
+                                                                        name="specialization">
+                                                    <option value="">Select an Option</option>
+                                        </select>
+                                    <small class="error-message" id="specializationError"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label mb-10" for="recipient-name">Type Of
+                                        Specialization:</label>
+                                    <input class="form-control" id="specializationType" name="specializationType"
+                                           type="text">
+                                    <small class="error-message" id="specializationTypeError"></small>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label mb-10" for="message-text">Short Description:</label>
+                                    <textarea class="form-control" id="shortDescription"
+                                              name="shortDescription"></textarea>
+                                    <small class="error-message" id="shortDescriptionError"></small>
+                                </div>
+
+
+                                <div class="modal-footer">
+                                    <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                                    <button class="btn btn-primary" type="submit">Save</button>
+                                </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Doctor Specialization Modal -->
+        <div class="modal fade" id="editDoctorModal" tabindex="-1" role="dialog" aria-labelledby="editDoctorModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editDoctorModalLabel">Edit Doctor Specialization</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="validationFormedit">
+                                <input type="hidden" id="editDoctorId" name="id">
+        <div class="form-group">
+            <label class="control-label mb-10" for="edoctorsDegree">Degree:</label>
+            <br>
+<!--            <select class="selectpicker form-control" data-style="form-control btn-default btn-outline" id="edoctorsDegree" name="edoctorsDegree">-->
+<!--                <option value="">Select an Option</option>-->
+<!--                <option value="MBBS" selected>MBBS</option>-->
+<!--                <option value="MS">MS</option>-->
+<!--                <option value="MD">MD</option>-->
+<!--            </select>-->
+            <select class="selectpicker form-control" data-style="form-control btn-default btn-outline" id="edoctorsDegree" name="edoctorsDegree">
+<!--                <option value="">Select an Option</option>-->
+            </select>
+            <small class="error-message" id="edoctorsDegreeError"></small>
+        </div>
+        <div class="form-group">
+            <label class="control-label mb-10" for="especialization">Specialization:</label>
+            <br>
+<!--            <select class="selectpicker form-control" data-style="form-control btn-default btn-outline" id="especialization" name="especialization">-->
+<!--                <option value="">Select an Option</option>-->
+<!--                <option value="Cardiology" selected>Cardiology</option>-->
+<!--                <option value="Pediatrician">Pediatrician</option>-->
+<!--                <option value="Orthopedic">Orthopedic</option>-->
+<!--            </select>-->
+             <select class="selectpicker form-control" data-style="form-control btn-default btn-outline" id="especialization" name="especialization">
+<!--                <option value="">Select an Option</option>-->
+            </select>
+            <small class="error-message" id="especializationError"></small>
+        </div>
+        <div class="form-group">
+            <label class="control-label mb-10" for="especializationType">Type of Specialization:</label>
+            <input class="form-control" type="text" value="General adult cardiologists" id="especializationType" name="especializationType">
+            <small class="error-message" id="especializationTypeError"></small>
+        </div>
+        <div class="form-group">
+            <label class="control-label mb-10" for="eshortDescription">Short Description:</label>
+            <textarea class="form-control" id="eshortDescription" name="eshortDescription">MBBS is one of the predominant medical graduate degrees for becoming a doctor.</textarea>
+            <small class="error-message" id="eshortDescriptionError"></small>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+            <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Button to Add Doctor Specialization -->
+        <div class="mb-3">
+            <button class="btn btn-primary" id="addDoctorButton" data-toggle="modal" data-target="#addDoctorModal">Add Doctor Specialization</button>
+        </div>
+
+        <!-- Doctor Specialization Management Table -->
+         <table class="table table-hover display  pb-30" id="datable_1">
+                                            <thead class="bg-primary">
+                                            <tr>
+                                                <th style="color:#fff;">S.NO</th>
+                                                <th style="color:#fff;">Degree</th>
+                                                <th style="color:#fff;">Specilization</th>
+                                                <th style="color:#fff;">Type of Specialization</th>
+                                                <th style="color:#fff;">Short Discription</th>
+                                                <th style="color:#fff;">Action</th>
+
+                                            </tr>
+                                            </thead>
+            <tbody id="doctorTableBody">
+                <!-- Table rows will be dynamically populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Select JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0/js/bootstrap-select.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Custom Script -->
+    <script>
+        // Function to fetch degrees from API and populate dropdown
+        function fetchAndPopulateDegrees() {
+            fetch("http://localhost:9090/api/GroupofDoctors/getAllDegrees")
+                .then(response => response.json())
+                .then(data => {
+                    const degreeDropdown = document.getElementById('doctorsDegree');
+                    degreeDropdown.innerHTML = '<option value="">Select an Option</option>';
+                    data.forEach(degree => {
+                        const option = document.createElement('option');
+                        option.value = degree.degreeName;
+                        option.text = degree.degreeName;
+                        degreeDropdown.appendChild(option);
+                    });
+                    // Refresh Bootstrap Select Picker after updating options
+                    $('#doctorsDegree').selectpicker('refresh');
+                })
+                .catch(error => console.error('Error fetching degrees:', error));
+        }
+
+        // Call fetchAndPopulateDegrees() when the page is loaded
+        document.addEventListener('DOMContentLoaded', fetchAndPopulateDegrees);
+
+        // Event listener to fetch degrees when the select dropdown is shown
+        $('#doctorsDegree').on('show.bs.select', function () {
+            fetchAndPopulateDegrees();
+        });
+
+    </script>
+<script>
+        // Function to fetch degrees from API and populate dropdown
+        function getAllSpecializations() {
+            fetch("http://localhost:9090/api/specialization/getAllSpecializations")
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Fetched Data:', data); // Log the fetched data
+                    const degreeDropdown = document.getElementById('specialization');
+                    degreeDropdown.innerHTML = '<option value="">Select an Option</option>';
+                    data.forEach(degree => {
+                        const option = document.createElement('option');
+                        option.value = degree.specialiZation; // Ensure the key matches the API response
+                        option.text = degree.specialiZation; // Ensure the key matches the API response
+                        degreeDropdown.appendChild(option);
+                    });
+                    // Refresh Bootstrap Select Picker after updating options
+                    $('#specialization').selectpicker('refresh');
+                })
+                .catch(error => console.error('Error fetching degrees:', error));
+        }
+
+        // Call getAllSpecializations() when the page is loaded
+        document.addEventListener('DOMContentLoaded', getAllSpecializations);
+
+        // Event listener to fetch degrees when the select dropdown is shown
+        $('#specialization').on('show.bs.select', function () {
+            getAllSpecializations();
+        });
+    </script>
+
+<script>
+    document.getElementById('validationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        // if ($(this).valid()) {
+            const formData = new FormData(event.target);
+
+            const editedDoctorData = {
+                doctorsDegree: formData.get('doctorsDegree'),
+                specialization: formData.get('specialization'),
+                specializationType: formData.get('specializationType'),
+                shortDescription: formData.get('shortDescription')
+            };
+
+            console.log('Form Data:', editedDoctorData); // Log the form data to the console
+
+            // Send the edited data to your backend API using fetch
+            fetch(`http://localhost:9090/api/specializationsTypes`, {
+                method: 'POST',
+                body: JSON.stringify(editedDoctorData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Specialization Type details inserted successfully');
+                    location.reload(); // Reload the page or update the table
+                } else {
+                    alert('Error updating doctor details');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        // } else {
+        //     console.log('Validation failed. API call not made.');
+        // }
+    });
+</script>
+<script>
+    // Fetch degrees and specializations once on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchAndPopulateDegrees();
+        getAllSpecializations();
+    });
+
+    // Function to fetch degrees and populate dropdown
+    function fetchAndPopulateDegrees(selectedDegree = "") {
+        fetch("http://localhost:9090/api/GroupofDoctors/getAllDegrees")
+            .then(response => response.json())
+            .then(data => {
+                const degreeDropdown = document.getElementById('edoctorsDegree');
+                degreeDropdown.innerHTML = ''; // Clear existing options
+                data.forEach(degree => {
+                    const option = document.createElement('option');
+                    option.value = degree.degreeName;
+                    option.textContent = degree.degreeName;
+                    if (degree.degreeName === selectedDegree) {
+                        option.selected = true;
+                    }
+                    degreeDropdown.appendChild(option);
+                });
+                $('#edoctorsDegree').selectpicker('refresh');
+            })
+            .catch(error => console.error('Error fetching degrees:', error));
+    }
+
+    // Function to fetch specializations and populate dropdown
+    function getAllSpecializations(selectedSpecialization = "") {
+        fetch("http://localhost:9090/api/specialization/getAllSpecializations")
+            .then(response => response.json())
+            .then(data => {
+                const specializationDropdown = document.getElementById('especialization');
+                specializationDropdown.innerHTML = ''; // Clear existing options
+                data.forEach(specialization => {
+                    const option = document.createElement('option');
+                    option.value = specialization.specialiZation;
+                    option.textContent = specialization.specialiZation;
+                    if (specialization.specialiZation === selectedSpecialization) {
+                        option.selected = true;
+                    }
+                    specializationDropdown.appendChild(option);
+                });
+                $('#especialization').selectpicker('refresh');
+            })
+            .catch(error => console.error('Error fetching specializations:', error));
+    }
+
+    // Fetch and populate doctor table
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch("http://localhost:9090/api/specializationsTypes")
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('doctorTableBody');
+                data.forEach((doctor, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${index+1}</td>
+                        <td>${doctor.doctorsDegree}</td>
+                        <td>${doctor.specialization}</td>
+                        <td>${doctor.specializationType}</td>
+                        <td>${doctor.shortDescription}</td>
+                        <td>
+                            <button class="btn btn-default btn-icon-anim btn-square" onClick="handleEdit(${doctor.id})"
+                                                           data-target="#edit" data-toggle="modal"><i
+                                                            class="fa fa-pencil">EDIT</i></button>
+                                                    <button class="btn btn-danger btn-icon-anim btn-square" onClick="handleDelete(${doctor.id})"
+                                                            data-target="#deletemodal"><i class="icon-trash"></i> DELETE
+                                                   </button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                    });
+
+                    // Destroy existing DataTable instance if it exists
+                    if ($.fn.DataTable.isDataTable('#datable_1')) {
+                        dataTable.destroy();
+                    }
+
+                    // Initialize DataTables after data is loaded
+                    dataTable = $('#datable_1').DataTable({
+                        "paging": true, // Enable pagination
+                        "searching": true, // Enable search
+                        "ordering": true, // Enable sorting
+                        "order": [[0, 'asc']], // Initial sorting by the first column ascending
+                        "autoWidth": false, // Disable auto width calculation
+                        "responsive": true // Enable responsiveness
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+    });
+
+    // Handle edit button click
+    function handleEdit(id) {
+        fetch(`http://localhost:9090/api/specializationsTypes/${id}`)
+            .then(response => response.json())
+            .then(doctor => {
+                console.log(doctor);
+                document.getElementById('editDoctorId').value = doctor.id;
+                document.getElementById('edoctorsDegree').value = doctor.doctorsDegree;
+                document.getElementById('especialization').value = doctor.specialization;
+                document.getElementById('especializationType').value = doctor.specializationType;
+                document.getElementById('eshortDescription').value = doctor.shortDescription;
+                $('#editDoctorModal').modal('show');
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    // Handle form submission
+    document.getElementById('validationFormedit').addEventListener('submit', function(event) {
+        event.preventDefault();
+        // if (``$(this).valid()) {
+            const formData = new FormData(event.target);
+            const doctorId = formData.get('id');
+            const editedDoctorData = {
+                doctorsDegree: formData.get('edoctorsDegree'),
+                specialization: formData.get('especialization'),
+                specializationType: formData.get('especializationType'),
+                shortDescription: formData.get('eshortDescription')
+            };
+
+            fetch(`http://localhost:9090/api/specializationsTypes/${doctorId}`, {
+                method: 'PUT',
+                body: JSON.stringify(editedDoctorData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Specialization type details updated successfully');
+                    location.reload();
+                } else {
+                    alert('Error updating doctor details');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        // } else {
+        //     console.log('Validation failed. API call not made.');
+        // }
+    });
+
+    // Handle delete button click
+    function handleDelete(id) {
+        if (confirm('Are you sure you want to delete this doctor?')) {
+            fetch(`http://localhost:9090/api/specializationsTypes/${id}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Specialization TYPE deleted successfully');
+                    location.reload();
+                } else {
+                    alert('Error deleting doctor');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    }
+</script>
+
+</body>
+</html>

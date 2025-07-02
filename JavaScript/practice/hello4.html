@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload and Display</title>
+    <style>
+        #upload-form, #image-table {
+            display: none;
+            margin-top: 20px;
+        }
+        .img-circle {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <button id="add-image-btn">Add Image</button>
+
+    <div id="upload-form">
+        <input type="file" id="image-input" accept="image/*">
+        <button id="upload-btn">Upload</button>
+    </div>
+
+    <table id="image-table" border="1">
+        <thead>
+            <tr>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dynamic image rows will be appended here -->
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('add-image-btn').addEventListener('click', () => {
+            document.getElementById('upload-form').style.display = 'block';
+        });
+
+        document.getElementById('upload-btn').addEventListener('click', () => {
+            const imageInput = document.getElementById('image-input');
+            const file = imageInput.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    const base64Image = reader.result.split(',')[1];
+                    const imgElement = document.createElement('img');
+                    imgElement.className = 'img-circle';
+                    imgElement.height = 70;
+                    imgElement.width = 70;
+                    imgElement.src = `data:image/jpeg;base64,${base64Image}`;
+
+                    const row = document.createElement('tr');
+                    const cell = document.createElement('td');
+                    cell.appendChild(imgElement);
+                    row.appendChild(cell);
+
+                    document.querySelector('#image-table tbody').appendChild(row);
+                    document.getElementById('image-table').style.display = 'table';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('http://localhost:9090/api/your-endpoint')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector('#image-table tbody');
+                    data.forEach(image => {
+                        const imgElement = document.createElement('img');
+                        imgElement.className = 'img-circle';
+                        imgElement.height = 70;
+                        imgElement.width = 70;
+                        imgElement.src = `data:image/jpeg;base64,${image.base64Image}`;
+
+                        const row = document.createElement('tr');
+                        const cell = document.createElement('td');
+                        cell.appendChild(imgElement);
+                        row.appendChild(cell);
+
+                        tableBody.appendChild(row);
+                    });
+                    if (data.length > 0) {
+                        document.getElementById('image-table').style.display = 'table';
+                    }
+                })
+                .catch(error => console.error('Error fetching images:', error));
+        });
+    </script>
+</body>
+</html>

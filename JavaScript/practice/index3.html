@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>my page@?!</title>
+</head>
+<body>
+
+	No1:<input type="text" id="t1"><br><br>
+	No2:<input type="text" id="t2"><br><br>
+	Result:<input type="text" id="t3"><br><br>
+	<button onclick="f1()">add</button>
+	<button onclick="f2()">sub</button>
+	<button onclick="f3()">mul</button>
+	<button onclick="f4()">div</button>
+
+	<script type="text/javascript">
+		function f1()
+		{
+			// number as text feilds 
+			var n1=document.getElementById('t1').value;
+			var n2=document.getElementById('t2').value;
+
+			var sum=parseInt(n1)+parseInt(n2);
+			document.getElementById('t3').value=sum;
+		}
+		function f2()
+		{
+			// number as text feilds 
+			var n1=document.getElementById('t1').value;
+			var n2=document.getElementById('t2').value;
+
+			var sum=parseInt(n1)-parseInt(n2);
+			document.getElementById('t3').value=sum;
+		}
+		function f3()
+		{
+			// number as text feilds 
+			var n1=document.getElementById('t1').value;
+			var n2=document.getElementById('t2').value;
+
+			var sum=parseInt(n1)*parseInt(n2);
+			document.getElementById('t3').value=sum;
+		}
+		function f4()
+		{
+			// number as text feilds 
+			var n1=document.getElementById('t1').value;
+			var n2=document.getElementById('t2').value;
+
+			var sum=parseInt(n1)/parseInt(n2);
+			document.getElementById('t3').value=sum;
+		}
+	</script>
+
+</body>
+</html>

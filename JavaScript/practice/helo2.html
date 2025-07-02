@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Specialization Management</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <!-- Bootstrap Select CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Doctor Specialization Management</h2>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#addDoctorModal">
+            Add New Specialization
+        </button>
+
+        <!-- Doctor Specialization Table -->
+        <table id="doctorTable" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Doctor's Degree</th>
+                    <th>Image</th>
+                    <th>Specialization</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="doctorTableBody">
+                <!-- Table rows will be populated dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Doctor Modal -->
+    <div class="modal fade" id="addDoctorModal" tabindex="-1" role="dialog" aria-labelledby="addDoctorModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addDoctorModalLabel">Add New Specialization</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                 <div class="modal-body">
+                            <form id="validationForm">
+
+                                    <div class="form-group">Add A Specialization Of Doctors
+                                        <label class="control-label mb-10">Doctors Degree<i class="glyphicon glyphicon-asterisk" style="color:red;margin:1px;"></i></label>
+<!--                                        <select class="selectpicker" data-style="form-control btn-default btn-outline" name="degreedropdown" id="degreedropdown" >-->
+<!--                                            <option value="">Select an Option</option>-->
+<!--                                            <option value="MBBS">MBBS</option>-->
+<!--                                            <option value="MS">MS</option>-->
+<!--                                            <option value="MD">MD</option>-->
+<!--                                        </select>-->
+                                          <select class="selectpicker" data-style="form-control btn-default btn-outline" name="degreedropdown" id="degreedropdown">
+                <option value="">Select an Option</option>
+            </select>
+                                        <small class="error-message" id="degreedropdownError" ></small>
+                                    </div>
+                                 <div class="form-group">
+                                    <label class="control-label mb-10" for="recipient-name">Image<i class="glyphicon glyphicon-asterisk" style="color:red;margin:1px;"></i></label>
+                                   <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                                        <div class="form-control" data-trigger="fileinput">
+                                                               <i class="fas fa-file fileinput-exists" style="color:#dc4666"></i>
+                                                            <span class="fileinput-filename"></span>
+                                                        </div>
+                                                        <span class="input-group-addon fileupload btn btn-info btn-anim btn-file"><i class="fa fa-upload"></i> <span class="fileinput-new btn-text">Select file</span> <span class="fileinput-exists btn-text">Change</span>
+                                                        <input type="file" name="image" id="image" >
+                                                        </span> <a href="#" class="input-group-addon btn btn-danger btn-anim fileinput-exists" data-dismiss="fileinput"><i class="fa fa-trash"></i><span class="btn-text"> Remove</span></a>
+                                                       <br>
+                                                    </div>
+                                                        <small class="error-message" id="imageError"></small>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label mb-10" for="recipient-name">Specialization<i class="glyphicon glyphicon-asterisk" style="color:red;margin:1px;"></i></label>
+                                    <input class="form-control"  type="text" name="specialization" id="specialization" style="text-transform:capitalize;">
+                                     <small class="error-message" id="specializationError"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label mb-10" for="recipient-name">Description<i class="glyphicon glyphicon-asterisk" style="color:red;margin:1px;"></i></label>
+                                    <textarea class="form-control"  name="discription" id="discription"></textarea>
+                                     <small class="error-message" id="discriptionError"></small>
+                                </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                            <button class="btn btn-primary" type="submit">Save</button>
+                        </div>
+                        </form>
+                        </div>
+                <!-- <div class="modal-body">
+                    <form id="validationForm">
+                        <div class="form-group">
+                            <label for="degreedropdown">Doctor's Degree <i class="text-danger">*</i></label>
+                            <select class="selectpicker form-control" data-style="btn-outline" id="degreedropdown" name="degreedropdown">
+                                <option value="">Select an Option</option>
+                            </select>
+                            <small class="text-danger" id="degreedropdownError"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image <i class="text-danger">*</i></label>
+                            <input type="file" class="form-control-file" id="image" name="image">
+                            <small class="text-danger" id="imageError"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="specialization">Specialization <i class="text-danger">*</i></label>
+                            <input type="text" class="form-control" id="specialization" name="specialization" style="text-transform: capitalize;">
+                            <small class="text-danger" id="specializationError"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="discription">Description <i class="text-danger">*</i></label>
+                            <textarea class="form-control" id="discription" name="discription"></textarea>
+                            <small class="text-danger" id="discriptionError"></small>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Doctor Modal -->
+    <div class="modal fade" id="editDoctorModal" tabindex="-1" role="dialog" aria-labelledby="editDoctorModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editDoctorModalLabel">Edit Specialization</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="validationFormedit">
+                        <input type="hidden" id="editDoctorId" name="id">
+                        <div class="form-group">
+                            <label for="edegreedropdown">Doctor's Degree <i class="text-danger">*</i></label>
+                            <select class="selectpicker form-control" data-style="btn-outline" id="edegreedropdown" name="edegreedropdown">
+                                <option value="">Select an Option</option>
+                            </select>
+                            <small class="text-danger" id="edegreedropdownError"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="especialization">Specialization <i class="text-danger">*</i></label>
+                            <input type="text" class="form-control" id="especialization" name="especialization" style="text-transform: capitalize;">
+                            <small class="text-danger" id="especializationError"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="edescription">Description <i class="text-danger">*</i></label>
+                            <textarea class="form-control" id="edescription" name="edescription"></textarea>
+                            <small class="text-danger" id="edescriptionError"></small>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <!--  <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Select JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
+    <!-- Font Awesome JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <!-- DataTables JS -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script> -->
+
+    <script>
+        // Function to fetch degrees from API and populate dropdown
+        function fetchAndPopulateDegrees() {
+            fetch("http://localhost:9090/api/GroupofDoctors/getAllDegrees")
+                .then(response => response.json())
+                .then(data => {
+                    const degreeDropdown = document.getElementById('degreedropdown');
+                    degreeDropdown.innerHTML = '<option value="">Select an Option</option>';
+                    data.forEach(degree => {
+                        const option = document.createElement('option');
+                        option.value = degree.degreeName;
+                        option.text = degree.degreeName;
+                        degreeDropdown.appendChild(option);
+                    });
+                    // Refresh Bootstrap Select Picker after updating options
+                    $('#degreedropdown').selectpicker('refresh');
+                })
+                .catch(error => console.error('Error fetching degrees:', error));
+        }
+
+        // Call fetchAndPopulateDegrees() when the page is loaded
+        document.addEventListener('DOMContentLoaded', fetchAndPopulateDegrees);
+
+        // Event listener to fetch degrees when the select dropdown is shown
+        $('#degreedropdown').on('show.bs.select', function () {
+            fetchAndPopulateDegrees();
+        });
+    </script>
+
+    <script>
+
+    document.getElementById('validationForm').addEventListener('submit', function(event)
+    {
+    event.preventDefault();
+            if (`$(this).valid()`) {
+                const formData = new FormData(event.target);
+
+                const editedDoctorData =
+                {
+                    doctorsDegree: formData.get('degreedropdown'),
+                    specialization: formData.get('specialization'),
+                    description: formData.get('discription')
+                };
+
+                 console.log('Form Data:', editedDoctorData); // Log the form data to the console
+
+                // check details are existed or not..
+                checkDetails(editedDoctorData);
+
+
+            }else {
+                console.log('Validation failed. API call not made.');
+            }
+
+         //   checkDetails function.....
+            function checkDetails(editedDoctorData)
+            {
+                    const specialization = editedDoctorData.specialization;
+              fetch("http://localhost:9090/api/specialization/degrees/"+specialization)
+
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    console.log(data,editedDoctorData.degree);
+                    if(data === "Specialization not found: ")
+                    {
+                     console.log(data,editedDoctorData.degree);
+                     insertDetails(editedDoctorData);
+                    }
+                    else
+                    {
+                     alert('specialization  already exists. Please choose a different name.');
+                    }
+
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                    });
+            }
+
+            // insertDetails function ...
+            function insertDetails(editedDoctorData)
+            {
+
+            // Send the edited data to your backend API using fetch
+            fetch(`http://localhost:9090/api/specialization`, {
+                method: 'POST',
+                body: JSON.stringify(editedDoctorData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Specialization details inserted successfully');
+                    location.reload(); // Reload the page or update the table
+                } else {
+                    alert('Error updating doctor details');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+            }
+
+        });
+
+
+</script>
+
+    <script>
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+        // Fetch data and populate DataTable
+        fetch("http://localhost:9090/api/specialization")
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('doctorTableBody');
+                tableBody.innerHTML = ''; // Clear existing table body content
+
+                data.forEach((doctor, index) => {
+                    const row = document.createElement('tr');
+
+                    row.innerHTML = `
+                        <td>${index+1}</td>
+                        <td>${doctor.doctorsDegree}</td>
+                        <td><img class="img-circle" height="70" src="${doctor.image}" width="70"></td>
+                        <td>${doctor.specialization}</td>
+                        <td>${doctor.description}</td>
+                        <td>
+                            <button class="btn btn-default btn-icon-anim btn-square" data-target="#editDoctorModal" data-toggle="modal" onClick="handleEdit(${doctor.id})">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-danger btn-icon-anim btn-square" onClick="handleDelete(${doctor.id})">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+
+                // Initialize DataTable after data is loaded
+                $('#doctorTable').DataTable({
+                    "paging": true, // Enable pagination
+                    "searching": true, // Enable search
+                    "ordering": true, // Enable sorting
+                    "autoWidth": false, // Disable auto width calculation
+                    "responsive": true // Enable responsiveness
+                });
+            })
+                .catch(error => console.error('Error fetching specialization data:', error));
+        });
+
+        // Function to handle edit modal prefilling with data
+        
+function handleEdit(id) {
+    fetch(`http://localhost:9090/api/specialization/${id}`)
+        .then(response => response.json())
+        .then(doctor => {
+            console.log(doctor);
+            document.getElementById('editDoctorId').value = doctor.id;
+            document.getElementById('especialization').value = doctor.specialization;
+            document.getElementById('edescription').value = doctor.description;
+            fetchAndPopulateDegrees(doctor.doctorsDegree);
+            $('#editDoctorModal').modal('show');
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+// Function to fetch degrees from API and populate the select box
+function fetchAndPopulateDegrees(selectedDegree) {
+    fetch("http://localhost:9090/api/GroupofDoctors/getAllDegrees")
+        .then(response => response.json())
+        .then(data => {
+            const degreeDropdown = document.getElementById('edegreedropdown');
+            degreeDropdown.innerHTML = ''; // Clear existing options
+
+            // Create an option for the currently assigned degree first
+            if (selectedDegree) {
+                const selectedOption = document.createElement('option');
+                selectedOption.value = selectedDegree;
+                selectedOption.textContent = selectedDegree;
+                selectedOption.selected = true;
+                degreeDropdown.appendChild(selectedOption);
+            }
+
+            // Populate other options from API response
+            data.forEach(degree => {
+                if (degree.degreeName !== selectedDegree) {
+                    const option = document.createElement('option');
+                    option.value = degree.degreeName;
+                    option.textContent = degree.degreeName;
+                    degreeDropdown.appendChild(option);
+                }
+            });
+
+            // Refresh Bootstrap Select Picker after updating options
+            $('#edegreedropdown').selectpicker('refresh');
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+document.getElementById('validationFormedit').addEventListener('submit', function(event) {
+    event.preventDefault();
+    if (`$(this).valid()`) {
+        const formData = new FormData(event.target);
+        const doctorId = formData.get('id');
+        const editedDoctorData = {
+            doctorsDegree: formData.get('edegreedropdown'),
+            specialization: formData.get('especialization'),
+            description: formData.get('edescription')
+        };
+
+        fetch(`http://localhost:9090/api/specialization/${doctorId}`, {
+            method: 'PUT',
+            body: JSON.stringify(editedDoctorData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Doctor details updated successfully');
+                location.reload();
+            } else {
+                alert('Error updating doctor details');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    } else {
+        console.log('Validation failed. API call not made.');
+    }
+});
+
+function handleDelete(id) {
+    if (confirm('Are you sure you want to delete this doctor?')) {
+        fetch(`http://localhost:9090/api/specialization/${id}`, {
+            method: 'DELETE'
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Doctor deleted successfully');
+                location.reload();
+            } else {
+                alert('Error deleting doctor');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+}
+    </script>
+</body>
+</html>

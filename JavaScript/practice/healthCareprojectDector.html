@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Form</title>
+</head>
+<body>
+    <h1>Doctor Form</h1>
+    <form id="doctorForm">
+        <label for="doctorFullName">Full Name:</label>
+        <input type="text" id="doctorFullName" name="doctorFullName" required><br><br>
+
+        <label for="doctorRegistrationNumber">Registration Number:</label>
+        <input type="text" id="doctorRegistrationNumber" name="doctorRegistrationNumber" required><br><br>
+
+        <label for="doctorDoB">Date of Birth (yyyy-MM-dd):</label>
+        <input type="text" id="doctorDoB" name="doctorDoB" pattern="\d{4}-\d{2}-\d{2}" required><br><br>
+
+        <label for="doctorGender">Gender:</label>
+        <input type="text" id="doctorGender" name="doctorGender" required><br><br>
+
+        <label for="doctorEducation">Education:</label>
+        <input type="text" id="doctorEducation" name="doctorEducation" required><br><br>
+
+        <label for="doctorDesignation">Designation:</label>
+        <input type="text" id="doctorDesignation" name="doctorDesignation" required><br><br>
+
+        <label for="doctorDepartment">Department:</label>
+        <input type="text" id="doctorDepartment" name="doctorDepartment" required><br><br>
+
+        <label for="doctorBiography">Biography:</label>
+        <textarea id="doctorBiography" name="doctorBiography" required></textarea><br><br>
+
+        <label for="doctorWorkingHours">Working Hours:</label>
+        <input type="text" id="doctorWorkingHours" name="doctorWorkingHours" required><br><br>
+<!-- 
+        <label for="doctorImage">Image:</label>
+        <input type="file" id="doctorImage" name="doctorImage" accept="image/*" required><br><br> -->
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('doctorForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const doctorData = {
+                doctorFullName: formData.get('doctorFullName'),
+                doctorRegistrationNumber: formData.get('doctorRegistrationNumber'),
+                doctorDoB: formData.get('doctorDoB'),
+                doctorGender: formData.get('doctorGender'),
+                doctorEducation: formData.get('doctorEducation'),
+                doctorDesignation: formData.get('doctorDesignation'),
+                doctorDepartment: formData.get('doctorDepartment'),
+                doctorBiography: formData.get('doctorBiography'),
+                doctorWorkingHours: formData.get('doctorWorkingHours'),
+                // doctorImage: formData.get('doctorImage')
+            };
+
+            // Log the data to the console (for debugging purposes)
+            console.log(doctorData);
+
+            // You can now send this data to your backend server using fetch or any other method
+            // Example:
+            fetch("http://localhost:9090/api/doctors", {
+                method: 'POST',
+                body: JSON.stringify(doctorData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response =>console.log(response))
+        });
+    </script>
+</body>
+</html>

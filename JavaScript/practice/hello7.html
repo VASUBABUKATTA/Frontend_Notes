@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specialization of Doctors Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Specialization of Doctors Management</h2>
+
+    <!-- Create Form -->
+    <form id="createForm" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="doctorsDegree">Doctor's Degree:</label>
+            <input type="text" class="form-control" id="doctorsDegree" name="doctorsDegree" required>
+        </div>
+        <div class="form-group">
+            <label for="specialization">Specialization:</label>
+            <input type="text" class="form-control" id="specialization" name="specialization" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="file">Upload Image:</label>
+            <input type="file" class="form-control-file" id="file" name="file">
+        </div>
+        <button type="submit" class="btn btn-primary">Create Specialization</button>
+    </form>
+
+    <hr>
+
+    <!-- Table to Display Specializations -->
+    <h3>Specializations List</h3>
+    <table id="specializationsTable" class="table">
+        <thead>
+        <tr>
+            <th>Doctors Degree</th>
+            <th>Specialization</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Table rows will be populated dynamically -->
+        </tbody>
+    </table>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+EmmAd/yYl63GPKZxd9yJFV5uEhsK7DkFfF"
+        crossorigin="anonymous"></script>
+<script>
+    // Fetch all specializations from backend and populate the table
+    function fetchSpecializations() {
+        fetch('http://localhost:9090/api/specialization')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.querySelector('#specializationsTable tbody');
+                tableBody.innerHTML = '';
+                data.forEach(specialization => {
+                    const row = `<tr>
+                                    <td>${specialization.doctorsDegree}</td>
+                                    <td>${specialization.specialization}</td>
+                                    <td>${specialization.description}</td>
+                                    <td><img src="http://localhost:9090/api/specialization/image/${specialization.id}" style="max-width: 100px; max-height: 100px;" alt="Image"></td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-primary"
+                                                onclick="editSpecialization(${specialization.id})">Edit
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-danger"
+                                                onclick="deleteSpecialization(${specialization.id})">Delete
+                                        </button>
+                                    </td>
+                                </tr>`;
+                    tableBody.innerHTML += row;
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }
+
+    // Function to handle form submission for creating specialization
+    document.querySelector('#createForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+
+        fetch('http://localhost:9090/api/specialization', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(createdSpecialization => {
+            alert('Specialization created successfully!');
+            form.reset();
+            fetchSpecializations(); // Refresh table after creating
+        })
+        .catch(error => console.error('Error creating specialization:', error));
+    });
+
+    // Function to delete a specialization by ID
+    function deleteSpecialization(id) {
+        if (confirm('Are you sure you want to delete this specialization?')) {
+            fetch(`http://localhost:9090/api/specialization/${id}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.status === 204) {
+                    alert(`Specialization with ID ${id} has been deleted.`);
+                    fetchSpecializations(); // Refresh table after deleting
+                } else {
+                    alert(`Failed to delete specialization with ID ${id}.`);
+                }
+            })
+            .catch(error => console.error('Error deleting specialization:', error));
+        }
+    }
+
+    // Initial fetch of specializations on page load
+    fetchSpecializations();
+</script>
+</body>
+</html>

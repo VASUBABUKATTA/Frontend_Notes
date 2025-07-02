@@ -1,0 +1,11 @@
+h1{border: 5px solid red;}
+h2{border: 10px dotted blue;}
+h3{border: 15px dashed green;}
+h4{border: 25px double yellow;}
+h5{border: 35px inset black;}
+h6{border: 45px solid pink;}
+
+div
+{
+	background-color:hsl(33, 100%, 60%);
+}

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Specialization Management</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Bootstrap Select CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Doctor Specialization Management</h2>
+        <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addDoctorModal">Add Doctor Specialization</button>
+        
+        <!-- Add Doctor Modal -->
+        <div class="modal fade" id="addDoctorModal" tabindex="-1" role="dialog" aria-labelledby="addDoctorModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addDoctorModalLabel">Add Doctor Specialization</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="validationForm">
+                            <div class="form-group">
+                                <label for="degreedropdown">Doctor's Degree</label>
+                                <select id="degreedropdown" class="selectpicker form-control" data-live-search="true" required>
+                                    <option value="">Select an Option</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="specialization">Specialization</label>
+                                <input type="text" class="form-control" id="specialization" name="specialization" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="discription">Description</label>
+                                <textarea class="form-control" id="discription" name="discription" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Edit Doctor Modal -->
+        <div class="modal fade" id="editDoctorModal" tabindex="-1" role="dialog" aria-labelledby="editDoctorModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editDoctorModalLabel">Edit Doctor Specialization</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="validationFormedit">
+                            <input type="hidden" id="editDoctorId" name="id">
+                            <div class="form-group">
+                                <label for="edegreedropdown">Doctor's Degree</label>
+                                <select id="edegreedropdown" class="selectpicker form-control" data-live-search="true" required>
+                                    <!-- Options will be populated dynamically -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="especialization">Specialization</label>
+                                <input type="text" class="form-control" id="especialization" name="especialization" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edescription">Description</label>
+                                <textarea class="form-control" id="edescription" name="edescription" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Doctor Specialization Table -->
+        <table id="datable_1" class="table table-bordered table-striped mt-4" style="width:100%">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Doctor's Degree</th>
+                    <th>Image</th>
+                    <th>Specialization</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="doctorTableBody">
+                <!-- Table rows will be populated dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Bootstrap Select JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+<!-- Your custom JavaScript -->
+<script>
+    // Function to fetch degrees from API and populate dropdown
+    function fetchAndPopulateDegrees() {
+        fetch("http://localhost:9090/api/GroupofDoctors/getAllDegrees")
+            .then(response => response.json())
+            .then(data => {
+                const degreeDropdown = document.getElementById('degreedropdown');
+                const edegreeDropdown = document.getElementById('edegreedropdown');
+
+                degreeDropdown.innerHTML = '<option value="">Select an Option</option>';
+                edegreeDropdown.innerHTML = ''; // Clear existing options
+
+                data.forEach(degree => {
+                    const option = document.createElement('option');
+                    option.value = degree.degreeName;
+                    option.text = degree.degreeName;
+
+                    const eoption = document.createElement('option');
+                    eoption.value = degree.degreeName;
+                    eoption.text = degree.degreeName;
+
+                    degreeDropdown.appendChild(option);
+                    edegreeDropdown.appendChild(eoption);
+                });
+
+                // Refresh Bootstrap Select Picker after updating options
+                $('#degreedropdown').selectpicker('refresh');
+                $('#edegreedropdown').selectpicker('refresh');
+            })
+            .catch(error => console.error('Error fetching degrees:', error));
+    }
+
+    // Call fetchAndPopulateDegrees() when the page is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchAndPopulateDegrees();
+
+        // Fetch and populate doctor specialization data in table
+        fetch("http://localhost:9090/api/specialization")
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('doctorTableBody');
+                data.forEach((doctor, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td>${doctor.doctorsDegree}</td>
+                        <td><img class="img-circle" height="70" src="img/panchakarma.jpeg" width="70"></td>
+                        <td>${doctor.specialization}</td>
+                        <td>${doctor.description}</td>
+                        <td>
+                            <button class="btn btn-default btn-icon-anim btn-square" data-toggle="modal" data-target="#editDoctorModal" onClick="handleEdit(${doctor.id})">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-danger btn-icon-anim btn-square" onClick="handleDelete(${doctor.id})">
+                                <i class="icon-trash"></i>
+                            </button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+
+                // Initialize DataTable after data is loaded
+                $('#datable_1').DataTable({
+                    "paging": true, // Enable pagination
+                    "searching": true, // Enable search
+                    "ordering": true, // Enable sorting
+                    "autoWidth": false, // Disable auto width calculation
+                    "responsive": true // Enable responsiveness
+                });
+            })
+            .catch(error => console.error('Error fetching specialization data:', error));
+    });
+
+    // Event listener for showing Add Doctor modal
+    $('#addDoctorModal').on('shown.bs.modal', function () {
+        fetchAndPopulateDegrees(); // Refresh degrees dropdown when modal is shown
+    });
+
+    // Event listener for showing Edit Doctor modal
+    $('#editDoctorModal').on('shown.bs.modal', function () {
+        fetchAndPopulateDegrees(); // Refresh degrees dropdown when modal is shown
+    });
+
+    // Function to handle edit button click
+    function handleEdit(id) {
+        fetch(`http://localhost:9090/api/specialization/${id}`)
+            .then(response => response.json())
+            .then(doctor => {
+                document.getElementById('editDoctorId').value = doctor.id;
+                document.getElementById('especialization').value = doctor.specialization;
+                document.getElementById('edescription').value = doctor.description;
+                fetchAndPopulateDegrees(doctor.doctorsDegree);
+            })
+            .catch(error => console.error('Error fetching doctor details:', error));
+    }
+
+    // Event listener for submit event on Add Doctor form
+    document.getElementById('validationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        if ($(this).valid()) {
+            const formData = new FormData(event.target);
+            const newDoctorData = {
+                doctorsDegree: formData.get('degreedropdown'),
+                specialization: formData.get('specialization'),
+                description: formData.get('discription')
+            };
+
+            fetch("http://localhost:9090/api/specialization", {
+                method: 'POST',
+                body: JSON.stringify(newDoctorData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Doctor specialization added successfully');
+                    $('#addDoctorModal').modal('hide');
+                    location.reload(); // Reload the page or update the table
+                } else {
+                    alert('Error adding doctor specialization');
+                }
+            })
+            .catch(error => console.error('Error adding doctor specialization:', error));
+        } else {
+            console.log('Validation failed. API call not made.');
+        }
+    });
+
+    // Event listener for submit event on Edit Doctor form
+    document.getElementById('validationFormedit').addEventListener('submit', function(event) {
+        event.preventDefault();
+        if ($(this).valid()) {
+            const formData = new FormData(event.target);
+            const doctorId = formData.get('id');
+            const editedDoctorData = {
+                doctorsDegree: formData.get('edegreedropdown'),
+                specialization: formData.get('especialization'),
+                description: formData.get('edescription')
+            };
+
+            fetch(`http://localhost:9090/api/specialization/${doctorId}`, {
+                method: 'PUT',
+                body: JSON.stringify(editedDoctorData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Doctor specialization updated successfully');
+                    $('#editDoctorModal').modal('hide');
+                    location.reload(); // Reload the page or update the table
+                } else {
+                    alert('Error updating doctor specialization');
+                }
+            })
+            .catch(error => console.error('Error updating doctor specialization:', error));
+        } else {
+            console.log('Validation failed. API call not made.');
+        }
+    });
+
+    // Function to handle delete button click
+    function handleDelete(id) {
+        if (confirm('Are you sure you want to delete this doctor specialization?')) {
+            fetch(`http://localhost:9090/api/specialization/${id}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Doctor specialization deleted successfully');
+                    location.reload(); // Reload the page or update the table
+                } else {
+                    alert('Error deleting doctor specialization');
+                }
+            })
+            .catch(error => console.error('Error deleting doctor specialization:', error));
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>MY PAGE!</title>
+</head>
+<body>
+
+	<script>
+
+		var j=13.5;
+
+		function f1() {
+			// local var
+			var i=10;
+			document.writeln(i+"local var :<br>" +j+"global var: ");
+			f2(i);
+		}
+
+		function f2(i)
+		{
+			// global var
+			document.writeln("<br> global var: "+j);
+			document.writeln("<br> global var: "+i);
+		}
+
+		f1();
+
+		var b=true;
+		var f=false;
+		var t="hi";
+		var d='bye';
+		var k;
+		var p=null;
+		document.writeln(b+" <br>  "+f+"  "+t+"  "+d+"  ");
+		document.writeln(k+"<br>  "+p)
+
+			// === operator  it will ckeck datatype same or not :
+
+			document.writeln((1 === 1)+"<br>");//true 
+
+			document.writeln((1 === true)+"<br>");//false
+
+			document.writeln((0 === false)+"<br>");//false
+
+			document.writeln(("1" === 1)+"<br>");//false
+
+			// == operator it will check the values are same or not:
+
+			document.writeln((1 == 1)+"<br>");//true 
+
+			document.writeln((1 == true)+"<br>");//true
+
+			document.writeln((0 == false)+"<br>");//true
+
+			document.writeln(("1" == 1)+"<br>");//true	
+			
+			
+
+	 </script>
+
+
+</body>
+</html>

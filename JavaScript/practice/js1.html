@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>MY PAGE !</title>
+</head>
+<body>
+
+	<script>
+
+		document.writeln("welcome to java Script");
+		document.writeln("<br>");
+		document.write("<h1 style='color:red'>welcome to java Script</h1>");
+		document.writeln("<br>");
+		document.writeln("welcome to java Script");
+		console.log("welcome to java Script");
+
+		document.writeln("<br> <button onClick='f1()'> Button </button>");
+
+		function f1() {
+
+			console.log("Button clicked");
+			document.writeln("<br>bytton clicked ");
+			document.writeln("<br> <button onClick='f2()'> Button </button>");
+		}
+
+		function f2(){
+
+		var a=prompt("enter a value : ");
+		var b=prompt("enter b value : ");
+
+		 var sum=parseInt(a)+parseInt(b);
+		 document.writeln("<br>the sum of the two num is :"+sum);
+		}
+
+	</script>
+
+</body>
+</html>
